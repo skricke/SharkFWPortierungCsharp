@@ -1,4 +1,7 @@
 ﻿namespace ASIP {
-  public class Knowledge {
+  // TODO XML-Comment for Knowledge 
+  public interface Knowledge {
+    // TODO Design and Implement Knowledge from BNF-File
+
   }
 }
