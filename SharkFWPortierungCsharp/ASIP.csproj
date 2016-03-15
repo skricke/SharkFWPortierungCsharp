@@ -8,7 +8,7 @@
     <ProjectGuid>{E62C1512-00BA-4D86-9A36-2F4B439A3DE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ASIP</RootNamespace>
+    <RootNamespace>Shark.ASIP</RootNamespace>
     <AssemblyName>SharkFWPortierungCsharp</AssemblyName>
     <DefaultLanguage>de-DE</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
@@ -38,18 +38,24 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SemanticTags\Types\Time.cs" />
+    <Compile Include="SemanticTags\Types\Address.cs" />
+    <Compile Include="SemanticTags\Types\AddressType.cs" />
     <Compile Include="ASIPEngine.cs" />
     <Compile Include="Directions.cs" />
     <Compile Include="Interest.cs" />
-    <Compile Include="JSONConverter.cs" />
+    <Compile Include="Conversion\JSONConverter.cs" />
     <Compile Include="Knowledge.cs" />
-    <Compile Include="PeerSemanticTag.cs" />
+    <Compile Include="SemanticTags\Types\Location.cs" />
+    <Compile Include="SemanticTags\PeerSemanticTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SemanticTagSet.cs" />
-    <Compile Include="SharkASIPException.cs" />
-    <Compile Include="SharkException.cs" />
-    <Compile Include="SpatialSemanticTag.cs" />
-    <Compile Include="TimeSemanticTag.cs" />
+    <Compile Include="SemanticTags\SemanticTag.cs" />
+    <Compile Include="SemanticTags\SemanticTagSet.cs" />
+    <Compile Include="Exception\SharkASIPIllegalArguementException.cs" />
+    <Compile Include="Exception\SharkASIPException.cs" />
+    <Compile Include="Exception\SharkException.cs" />
+    <Compile Include="SemanticTags\SpatialSemanticTag.cs" />
+    <Compile Include="SemanticTags\TimeSemanticTag.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
