@@ -24,7 +24,7 @@ namespace Shark {
       /// </summary>
       /// <param name="interest"></param>
       /// <returns></returns>
-      public static String convertInterestToJSON(Interest interest) {
+      public static String convertInterestToJSON(IInterest interest) {
         // TODO Complete JSON-Method and comment it
         String json = "{" + Environment.NewLine;
         String topics = "\"topics\": {" + Environment.NewLine

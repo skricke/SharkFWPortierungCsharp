@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark {
+  // TODO IList more abstract?? -> IEnumerable / collection?
   /// <summary>
   ///   Namespace for Semantic Internet Protocol (ASIP) for the SHARK Framework
   /// </summary>
@@ -17,14 +18,14 @@ namespace Shark {
     /// <version>14032016</version>
     /// <see href="https://github.com/SharedKnowledge"/>
     /// 
-    interface ASIPEngine {
+    interface IASIPEngine {
       /// <summary>
       ///   Send the insert command for insertion of the Knowledge.
       /// </summary>
       /// 
       /// <param name="givenKens">The knowledges to be send.</param>
       /// <exception cref="SharkASIPException">Throws an Exception if the Knowledge couldn't be insert.</exception>
-      void insert(IList<Knowledge> givenKens);
+      void insert(IList<IKnowledge> givenKens);
 
       /// <summary>
       ///   Send an expose command for Receiving of the Knowledge(s) which the Interest is in.
@@ -32,7 +33,7 @@ namespace Shark {
       /// 
       /// <param name="wantedInterests">The Interests from which Knowledges are wanted.</param> 
       /// <exception cref="SharkASIPException">Throws an Exception if the wanted Knowledge of the given Interest couldn't be expose.</exception>
-      void expose(IList<Interest> wantedInterests);
+      void expose(IList<IInterest> wantedInterests);
 
       /// <summary>
       ///   New Command for ...

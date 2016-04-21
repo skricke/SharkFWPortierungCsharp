@@ -9,7 +9,7 @@ namespace Shark {
     ///
     /// <see href="https://github.com/SharedKnowledge/SharkFW/blob/master/src/java/core/net/sharkfw/protocols/Protocols.java"/>
     /// <remarks> sk, 15.03.2016. </remarks>
-    public interface PeerSemanticTag : SemanticTag {
+    public interface IPeerSemanticTag : ISemanticTag {
 
       /// <summary> Property with the addresses of the PeerSemanticTag. </summary>
       ///

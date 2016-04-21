@@ -3,7 +3,7 @@
 
     /// <summary> Supported values that represent adress types for PeerSemanticTag adresses. </summary>
     /// <see cref="Shark.ASIP.Address"/>
-    /// <see cref="Shark.ASIP.PeerSemanticTag"/>
+    /// <see cref="Shark.ASIP.IPeerSemanticTag"/>
     /// 
     /// <remarks> sk, 15.03.2016. </remarks>
     public enum AddressType {

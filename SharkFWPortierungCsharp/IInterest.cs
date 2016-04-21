@@ -34,7 +34,7 @@ namespace Shark {
     /// <version>14032016</version>
     /// <see href="https://github.com/SharedKnowledge/SharkFW/blob/master/src/java/core/net/sharkfw/asip/ASIPInterest.java"/>
     /// 
-    public interface Interest {
+    public interface IInterest : ASIPContent {
       // TODO List of Properties? TopicS, etc. implicites more than one or done by the Set?
       /// <summary>
       ///   Interest property for Topics to be set.
@@ -43,12 +43,12 @@ namespace Shark {
       /// Topics are stored in semantic tag sets. They describe their semantics. 
       /// That’s done with a subject identiﬁer, which have a Set of URIs (generally URL's)
       /// describing the same thing named with a topic name. 
-      SemanticTagSet Topics { get; set; }
+      ISemanticTagSet Topics { get; set; }
       /// <summary>
       ///   The Type of Interest. // TODO Comment/Define the types.
       /// </summary>
       /// 
-      SemanticTagSet Types { get; set; }
+      ISemanticTagSet Types { get; set; }
       /// <summary>
       /// Trusted Peers that verificate the Information of an individual Peer.
       /// </summary>
@@ -56,29 +56,29 @@ namespace Shark {
       /// Allows to be interested in someones Knowledge under the condition of this Peer
       /// being verificated (like "Web of Trust") by someone in the Approvers List.
       /// Approvers are trusted by own peer and can be set/ add.
-      IList<PeerSemanticTag> Approvers { get; set; }
+      IList<IPeerSemanticTag> Approvers { get; set; }
       /// <summary>
       ///   It´s the Originators peer of an Knowledge. He could have signed the message but must not.
       /// </summary>
-      /// 
+      /// TODO multiple senders?
       /// The Sender is the first Source of the specified message - the Originator. He can sign the message
       /// for better secure Source Identification but it´s not necessary.
-      PeerSemanticTag Sender { get; set; }
+      IPeerSemanticTag Sender { get; set; }
       /// <summary>
       /// The Remote Peers of an interest.
       /// </summary>
-      PeerSemanticTag Recipients { get; set; } // TODO recipients or receivers ?? BNF vs JAVA
+      IPeerSemanticTag Recipients { get; set; } // TODO recipients or receivers ?? BNF vs JAVA
       /// <summary>
       /// The spatial Location of an interest belonging on earth coordinates.
       /// </summary>
-      SpatialSemanticTag Locations { get; set; }
+      ISpatialSemanticTag Locations { get; set; }
       /// <summary>
       /// The Time Dimension of the Interest. 
       /// </summary>
       /// 
       /// Time semantic tags describe a period of time.
       /// They are mainly used to describe time frames in which interests or information oﬀering are valid.
-      TimeSemanticTag Times { get; set; }
+      ITimeSemanticTag Times { get; set; }
       /// <summary>
       /// The Direction of interest. Possible directions are NO, IN, OUT or INOUT. 
       /// It Specifies if an interest can be send or received.
