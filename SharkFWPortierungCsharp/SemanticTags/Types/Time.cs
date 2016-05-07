@@ -1,9 +1,13 @@
-﻿namespace Shark.ASIP.SemanticTags {
+﻿namespace Shark.ASIP {
 
   /// <summary> Interface for time used by TimeSemanticTags for describing time periods in between an information is valid. </summary>
   ///
   /// <remarks> sk, 15.03.2016. </remarks>
   public interface Time {
+    /// <summary>
+    ///   Defines the format type of the time specification. Supported are UTC, Unix and Sharktime.
+    /// </summary>
+    TimeType Format { get; set; }
 
     /// <summary> The From-Property contains the start point in time </summary>
     ///

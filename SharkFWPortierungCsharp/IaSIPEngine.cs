@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace Shark {
+namespace Shark
+{
   // TODO IList more abstract?? -> IEnumerable / collection?
   /// <summary>
   ///   Namespace for Semantic Internet Protocol (ASIP) for the SHARK Framework
   /// </summary>
-  namespace ASIP {
+  namespace ASIP
+  {
     /// <summary>
     ///   This is an interface for the new Semantic Internet Protocol (ASIP) Support of the Shark Framework for P2P-<strong>Shar</strong>ed <strong>K</strong>nowledge.
     /// </summary>

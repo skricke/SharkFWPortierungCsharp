@@ -16,8 +16,17 @@ namespace Shark {
       IList<Time> Times { get; }
 
       // TODO add and remove Location times
+      /// <summary>
+      ///   Adds a valid time period.
+      /// </summary>
       void addTime();
-      void removeTime();
+
+      /// <summary>
+      ///   Remove time data on the given index.
+      /// </summary>
+      /// <param name="index">The index of the time in the list.</param>
+      /// <exception cref="SharkASIPIllegalArguementException"> Thrown if index out of bound. </exception>
+      void removeTime(int index);
     }
   }
 }

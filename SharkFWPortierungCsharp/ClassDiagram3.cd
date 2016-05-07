@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Shark.ASIP.SharkASIPException" Collapsed="true">
+    <Position X="8.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exception\SharkASIPException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shark.ASIP.SharkASIPIllegalArguementException" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exception\SharkASIPIllegalArguementException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shark.SharkException" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exception\SharkException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shark.ASIP.JSONConverter" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Conversion\JSONConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Shark.ASIP.IPeerSemanticNet" Collapsed="true">
+    <Position X="0.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SemanticNets\IPeerSemanticNet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IProperty" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>SemanticNets\IProperty.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ISemanticNet" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAgAAAAAAAAACACAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SemanticNets\ISemanticNet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ISpatialSemanticNet" Collapsed="true">
+    <Position X="3" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SemanticNets\ISpatialSemanticNet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ITimeSemanticNet" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SemanticNets\ITimeSemanticNet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IPeerSemanticTag" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABEAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAIAA=</HashCode>
+      <FileName>SemanticTags\IPeerSemanticTag.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ISemanticTag" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAQAAAAAQAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>SemanticTags\ISemanticTag.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ISemanticTagSet" Collapsed="true">
+    <Position X="11" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAgAACBoAAEAAAACAAAAAAAAAAAIAAQAA=</HashCode>
+      <FileName>SemanticTags\ISemanticTagSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ISpatialSemanticTag" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>SemanticTags\ISpatialSemanticTag.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ITimeSemanticTag" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAAAgAAAA=</HashCode>
+      <FileName>SemanticTags\ITimeSemanticTag.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ASIPContent" Collapsed="true">
+    <Position X="6.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ASIPContent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IASIPEngine" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAABAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>IASIPEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IInfoMetaData" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>IInfoMetaData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IInformation" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>IInformation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IInformationData" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>IInformationData.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IInfoSpace" Collapsed="true">
+    <Position X="5.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IInfoSpace.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IInMessage" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IInMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IInterest" Collapsed="true">
+    <Position X="5.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAACIACAAAAEAAAAIAAAAAACAIAAA=</HashCode>
+      <FileName>IInterest.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IKnowledge" Collapsed="true">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IKnowledge.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IMessage" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>IMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IMessageContent" Collapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAgAAAAAAAAAABAQAAAIAAAAAAAAAAAAAAAw=</HashCode>
+      <FileName>IMessageContent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IMessageHeader" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAABAAgoEAAQAAAAAAAAIAAg=</HashCode>
+      <FileName>IMessageHeader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IMessageSignature" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IMessageSignature.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.IOutMessage" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IOutMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Shark.ASIP.ISharkVocabulary" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISharkVocabulary.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Shark.ASIP.ASIPCommand" Collapsed="true">
+    <Position X="11" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ASIPCommand.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

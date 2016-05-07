@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E62C1512-00BA-4D86-9A36-2F4B439A3DE2}</ProjectGuid>
+    <ProjectGuid>{CB3188A9-D8EB-47EB-B749-BBC99215A44A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shark.ASIP</RootNamespace>
-    <AssemblyName>SharkFWPortierungCsharp</AssemblyName>
+    <RootNamespace>Shark</RootNamespace>
+    <AssemblyName>Shark</AssemblyName>
     <DefaultLanguage>de-DE</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -24,7 +24,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\SharkFWPortierungCsharp.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,50 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram3.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ASIPCommand.cs" />
-    <Compile Include="ASIPContent.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="IInfoMetaData.cs" />
-    <Compile Include="IInformation.cs" />
-    <Compile Include="IInformationData.cs" />
-    <Compile Include="IInfoSpace.cs" />
-    <Compile Include="IInMessage.cs" />
-    <Compile Include="IMessage.cs" />
-    <Compile Include="IMessageContent.cs" />
-    <Compile Include="IMessageHeader.cs" />
-    <Compile Include="IMessageSignature.cs" />
-    <Compile Include="IOutMessage.cs" />
-    <Compile Include="SemanticNets\ISpatialSemanticNet.cs" />
-    <Compile Include="SemanticNets\ITimeSemanticNet.cs" />
-    <Compile Include="SemanticNets\IPeerSemanticNet.cs" />
-    <Compile Include="SemanticNets\IProperty.cs" />
-    <Compile Include="SemanticNets\ISemanticNet.cs" />
-    <Compile Include="ISharkVocabulary.cs" />
-    <Compile Include="SemanticTags\Types\TimeType.cs" />
-    <Compile Include="SemanticTags\Types\Time.cs" />
-    <Compile Include="SemanticTags\Types\Address.cs" />
-    <Compile Include="SemanticTags\Types\AddressType.cs" />
-    <Compile Include="IASIPEngine.cs" />
-    <Compile Include="Directions.cs" />
-    <Compile Include="IInterest.cs" />
-    <Compile Include="Conversion\JSONConverter.cs" />
-    <Compile Include="IKnowledge.cs" />
-    <Compile Include="SemanticTags\Types\Location.cs" />
-    <Compile Include="SemanticTags\IPeerSemanticTag.cs" />
+    <Compile Include="Development\SharkDevelopmentPlaceholder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SemanticTags\ISemanticTag.cs" />
-    <Compile Include="SemanticTags\ISemanticTagSet.cs" />
-    <Compile Include="Exception\SharkASIPIllegalArguementException.cs" />
-    <Compile Include="Exception\SharkASIPException.cs" />
-    <Compile Include="Exception\SharkException.cs" />
-    <Compile Include="SemanticTags\ISpatialSemanticTag.cs" />
-    <Compile Include="SemanticTags\ITimeSemanticTag.cs" />
-    <Compile Include="TestClass1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

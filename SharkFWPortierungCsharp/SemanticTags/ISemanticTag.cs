@@ -10,16 +10,21 @@
     /// <value> The name. </value>
     string Name { get; set; }
 
-    /// <summary> Gets or sets the subject identifiers. A subjectIdentifier is a uri: http://www.w3.org/Addressing/URL/5_URI_BNF.html. </summary>
+    /// <summary> Gets the actual subject identifiers. A subjectIdentifier is a uri: http://www.w3.org/Addressing/URL/5_URI_BNF.html. </summary>
     ///
     /// <value> The subjectIdentifiers. </value>
     /// <exception cref="SharkASIPIllegalArguementException">Thrown if the SI has a wrong URI-format.</exception>
-    string[] SIS { get; set; }
+    string[] SIS { get; }
 
-    /// <summary> Adds the sis. </summary>
+    /// <summary> Adds the subject identifier. </summary>
     ///
-    /// <param name="newSIS"> The new sis to be add. </param>
-    void addSIS(string newSIS);
+    /// <param name="newSI"> The new subject identifier to be add. </param>
+    void addSI(string newSI);
+
+    /// <summary> Remove the subject identifier. </summary>
+    ///
+    /// <param name="subjectIdentifier"> The subject identifier to be removed. </param>
+    void removeSI(string subjectIdentifier);
 
   }
 }

@@ -19,8 +19,17 @@ namespace Shark {
       IList<Location> Locations { get; }
 
       // TODO add and remove Location geometry with WKT-Support
+      /// <summary>
+      ///   Adds a location to the property of Locations.
+      /// </summary>
       void addLocation();
-      void removeLocation();
+
+      /// <summary>
+      ///   Removes the Location on the given index.
+      /// </summary>
+      /// <param name="index">The index of the location, which will be deleted.</param>
+      /// <exception cref="SharkASIPIllegalArguementException"> Thrown if index out of bound. </exception>
+      void removeLocation(int index);
     }
   }
 }

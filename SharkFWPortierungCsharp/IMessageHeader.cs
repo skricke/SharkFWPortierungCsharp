@@ -34,7 +34,7 @@ namespace Shark.ASIP {
     /// <summary>
     ///   The TTL (Time to Live) value sets the living time of the message. Possible as standard number or unixTime or utcTime.
     /// </summary>
-    uint TimeToLive { get; set; }
+    uint TimeToLive { get; set; } // TODO unix/utcTime
 
     /// <summary>
     ///   Adds a receiver to the list of SemanticTags.

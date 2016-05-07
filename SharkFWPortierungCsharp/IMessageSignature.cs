@@ -4,5 +4,9 @@
   /// </summary>
   public interface IMessageSignature {
     // signature               = text ;
+    /// <summary>
+    ///   Generates a signature.
+    /// </summary>
+    void generateSignature();
   }
 }

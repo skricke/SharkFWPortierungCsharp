@@ -16,7 +16,7 @@ namespace Shark.ASIP {
     /// <summary>
     ///   The commands insert, expose or raw are available for any message.
     /// </summary>
-    ASIPCommand Command { get; }
+    ASIPCommand Command { get; set; }
     /// <summary>
     ///   The real content with information like knowledges or interests. Raw formated text is also possible.
     /// </summary>
@@ -25,5 +25,16 @@ namespace Shark.ASIP {
     ///   The signature of the message content to confirm the contents authencity.
     /// </summary>
     IMessageSignature signature { get; set; }
+
+    /// <summary>
+    ///   Adds new content to the enumeration of ASIPContents.
+    /// </summary>
+    /// <param name="newContent">The new Content to be add to the enumeration of contents.</param>
+    void addContent(ASIPContent newContent);
+    /// <summary>
+    ///   Remove the given content from the enumeration of given contents, if found. If not found nothing happens.
+    /// </summary>
+    /// <param name="content">The content to be removed.</param>
+    void removeContent(ASIPContent content);
   }
 }

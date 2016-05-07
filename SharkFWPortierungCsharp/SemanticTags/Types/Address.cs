@@ -11,23 +11,79 @@
       /// <value> The Address type. </value>
       AddressType Type { get; set; }
 
-      /// <summary> Gets or sets the end point of the Address. </summary>
+      /// <summary> Gets the complete Address. </summary>
       ///
-      /// <value> The end point. </value>
-      string endPoint { get; set; }
+      /// <value> The real address. </value>
+      string Address { get; }
 
-      // TODO: Address
-      //  address                 = '{'
-      //                          '"address":' gcf
-      //                        '}' ;
-      //  addresses               = address { ',' address
-      //    };
-      //    gcf                     = tcpEndpoint | httpEndpoint | mailEndpoint ;
-      //  endPoint                = ( character | '.' | '-' ) { ( character | '.' | '-' ) };
-      //  port                    = number ;
-      //  tcpEndpoint             = 'tcp' '://' endPoint[':' port] ;
-      //  httpEndpoint            = 'http' '://' endPoint[':' port] ;
-      //  mailEndpoint            = 'mail' '://' user '@' endPoint[';' mbSize] ;
+      /// <summary>
+      ///   Generates a valid TCP-Address from the given endPoint. Format looks like: 
+      ///     tcpEndpoint = 'tcp' '://' endPoint[':' port] ;
+      ///     .
+      ///   A static implementation is recommended. The Port is optional.      
+      /// </summary>
+      /// <param name="endPoint">The endPoint of the address.</param>
+      /// <returns>A valid address for usage in shark system.</returns>
+      /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
+      string generateTCPAddress(string endPoint);
+      /// <summary>
+      ///   Generates a valid TCP-Address from the given endPoint and the optional Port. Format looks like: 
+      ///     tcpEndpoint = 'tcp' '://' endPoint[':' port] ;
+      ///     .
+      ///   A static implementation is recommended.      
+      /// </summary>
+      /// <param name="endPoint">The endPoint of the address.</param>
+      /// <param name="port">The Port of the TCP-Address.</param>
+      /// <returns>A valid address for usage in shark system.</returns>
+      /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
+      string generateTCPAddress(string endPoint, uint port);
+
+      /// <summary>
+      ///   Generates a valid HTTP-Address from the given endPoint. Format looks like: 
+      ///     httpEndpoint = 'http' '://' endPoint[':' port] ;
+      ///     .
+      ///   A static implementation is recommended. The Port is optional.      
+      /// </summary>
+      /// <param name="endPoint">The endPoint of the address.</param>
+      /// <returns>A valid address for usage in shark system.</returns>
+      /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
+      string generateHTTPAddress(string endPoint);
+      /// <summary>
+      ///   Generates a valid HTTP-Address from the given endPoint. Format looks like: 
+      ///     httpEndpoint = 'http' '://' endPoint[':' port] ;
+      ///     .
+      ///   A static implementation is recommended. The Port is optional.      
+      /// </summary>
+      /// <param name="endPoint">The endPoint of the address.</param>
+      /// <param name="port">The Port of the HTTP-Address.</param>
+      /// <returns>A valid address for usage in shark system.</returns>
+      /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
+      string generateHTTPAddress(string endPoint, uint port);
+
+      /// <summary>
+      ///   Generates a valid Mail-Address from the given endPoint. Format looks like: 
+      ///     mailEndpoint = 'mail' '://' user '@' endPoint[';' mbSize] ;
+      ///     .
+      ///   A static implementation is recommended. The mbSize is optional.      
+      /// </summary>
+      /// <param name="endPoint">The endPoint of the address.</param>
+      /// <param name="user">The username of the Mail-Address.</param>
+      /// <returns>A valid address for usage in shark system.</returns>
+      /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
+      string generateMailAddress(string user, string endPoint);
+      /// <summary>
+      ///   Generates a valid Mail-Address from the given endPoint. Format looks like: 
+      ///     mailEndpoint = 'mail' '://' user '@' endPoint[';' mbSize] ;
+      ///     .
+      ///   A static implementation is recommended. The Port is optional.      
+      /// </summary>
+      /// <param name="endPoint">The endPoint of the address.</param>
+      /// <param name="user">The username of the Mail-Address.</param>
+      /// <param name="mbSize">The size in MB.</param>
+      /// <returns>A valid address for usage in shark system.</returns>
+      /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
+      string generateMailAddress(string user, string endPoint, uint mbSize);
+      
     }
   }
 }
