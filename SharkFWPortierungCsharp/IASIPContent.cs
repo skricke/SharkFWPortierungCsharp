@@ -1,5 +1,5 @@
 ﻿namespace Shark.ASIP {
-  public interface ASIPContent {
+  public interface IASIPContent {
     // TODO design abstract content methods
   }
 }

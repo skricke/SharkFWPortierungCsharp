@@ -34,7 +34,7 @@ namespace Shark {
     /// <version>14032016</version>
     /// <see href="https://github.com/SharedKnowledge/SharkFW/blob/master/src/java/core/net/sharkfw/asip/ASIPInterest.java"/>
     /// 
-    public interface IInterest : ASIPContent {
+    public interface IInterest : IASIPContent {
       // TODO List of Properties? TopicS, etc. implicites more than one or done by the Set?
       /// <summary>
       ///   Interest property for Topics to be set.
@@ -67,18 +67,18 @@ namespace Shark {
       /// <summary>
       /// The Remote Peers of an interest.
       /// </summary>
-      IPeerSemanticTag Recipients { get; set; } // TODO recipients or receivers ?? BNF vs JAVA
+      IList<IPeerSemanticTag> Recipients { get; set; } // TODO recipients or receivers ?? BNF vs JAVA
       /// <summary>
       /// The spatial Location of an interest belonging on earth coordinates.
       /// </summary>
-      ISpatialSemanticTag Locations { get; set; }
+      IList<ISpatialSemanticTag> Locations { get; set; }
       /// <summary>
       /// The Time Dimension of the Interest. 
       /// </summary>
       /// 
       /// Time semantic tags describe a period of time.
       /// They are mainly used to describe time frames in which interests or information oﬀering are valid.
-      ITimeSemanticTag Times { get; set; }
+      IList<ITimeSemanticTag> Times { get; set; }
       /// <summary>
       /// The Direction of interest. Possible directions are NO, IN, OUT or INOUT. 
       /// It Specifies if an interest can be send or received.

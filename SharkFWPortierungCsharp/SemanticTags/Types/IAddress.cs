@@ -4,7 +4,7 @@
     /// <summary> Interface for adress used by PeerSemanticTags. Supported are TCP-, HTTP- and MAIL-Adresses. </summary>
     ///
     /// <remarks> sk, 15.03.2016. </remarks>
-    public interface Address {
+    public interface IAddress {
 
       /// <summary> Gets or sets the type of an Address. </summary>
       ///

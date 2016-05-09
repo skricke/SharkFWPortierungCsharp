@@ -3,8 +3,8 @@
 namespace Shark.ASIP {
   interface IPeerSemanticNet : ISemanticNet {
     /// <summary>
-    ///   The PeerSemanticTag represents the node in the peer semantic net.
+    ///   The PeerSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>
-    new IPeerSemanticTag SemanticTag { get; set; }
+    new IDictionary<string, IPeerSemanticTag> SemanticTagsTable { get; set; }
   }
 }

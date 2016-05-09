@@ -2,7 +2,7 @@
   namespace ASIP {
 
     /// <summary> Supported values that represent adress types for PeerSemanticTag adresses. </summary>
-    /// <see cref="Shark.ASIP.Address"/>
+    /// <see cref="Shark.ASIP.IAddress"/>
     /// <see cref="Shark.ASIP.IPeerSemanticTag"/>
     /// 
     /// <remarks> sk, 15.03.2016. </remarks>

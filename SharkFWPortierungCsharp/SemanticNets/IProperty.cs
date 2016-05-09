@@ -1,6 +1,6 @@
 ﻿namespace Shark.ASIP {
   /// <summary>
-  /// A Property contains a directed relationship between two SemanticTags, which are represented by their ID.
+  /// A Property contains a directed and named relationship between two SemanticTags, which are represented by their ID.
   /// </summary>
   public interface IProperty {
     /// <summary>

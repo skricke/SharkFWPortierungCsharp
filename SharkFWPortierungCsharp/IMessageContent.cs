@@ -20,7 +20,7 @@ namespace Shark.ASIP {
     /// <summary>
     ///   The real content with information like knowledges or interests. Raw formated text is also possible.
     /// </summary>
-    IEnumerable<ASIPContent> Content { get; }
+    IEnumerable<IASIPContent> Content { get; }
     /// <summary>
     ///   The signature of the message content to confirm the contents authencity.
     /// </summary>
@@ -30,11 +30,11 @@ namespace Shark.ASIP {
     ///   Adds new content to the enumeration of ASIPContents.
     /// </summary>
     /// <param name="newContent">The new Content to be add to the enumeration of contents.</param>
-    void addContent(ASIPContent newContent);
+    void addContent(IASIPContent newContent);
     /// <summary>
     ///   Remove the given content from the enumeration of given contents, if found. If not found nothing happens.
     /// </summary>
     /// <param name="content">The content to be removed.</param>
-    void removeContent(ASIPContent content);
+    void removeContent(IASIPContent content);
   }
 }

@@ -2,7 +2,7 @@
   namespace ASIP {
 
     /// <summary> Supported values that represent time formats for TimeSemanticTag time specifications. </summary>
-    /// <see cref="Shark.ASIP.Time"/>
+    /// <see cref="Shark.ASIP.ITime"/>
     /// <see cref="Shark.ASIP.ITimeSemanticTag"/>
     /// 
     /// <remarks> sk, 15.03.2016. </remarks>

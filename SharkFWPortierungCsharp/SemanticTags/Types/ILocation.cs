@@ -1,5 +1,5 @@
 ﻿namespace Shark.ASIP {
-  public interface Location {
+  public interface ILocation {
     // TODO: Location
     // locations               = location { ',' location
     //  };

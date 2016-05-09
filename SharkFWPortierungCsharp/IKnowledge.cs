@@ -3,7 +3,7 @@
 namespace Shark {
   namespace ASIP {
     // TODO XML-Comment for Knowledge 
-    public interface IKnowledge : ASIPContent {
+    public interface IKnowledge : IASIPContent {
       // TODO Design and Implement Knowledge from BNF-File
       ISharkVocabulary Vocabulary { get; }
       IEnumerable<IInformation> Infos { get; }

@@ -16,7 +16,7 @@ namespace Shark {
       ///           Locations are described via WKT. </summary>
       /// <see href="http://docs.opengeospatial.org/is/12-063r5/12-063r5.html"/>
       /// <value> The locations. </value>
-      IList<Location> Locations { get; }
+      IList<ILocation> Locations { get; }
 
       // TODO add and remove Location geometry with WKT-Support
       /// <summary>

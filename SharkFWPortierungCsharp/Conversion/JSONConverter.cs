@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shark {
-  namespace ASIP {
+namespace Shark.ASIP.Conversion { 
     /// <summary>
     /// Provides JSON-Conversion for ASIP-Messages in Shark Framework.
     /// </summary>
@@ -18,7 +17,7 @@ namespace Shark {
     ///   <li>Interest</li>
     ///   <li>Knowledge</li>
     /// </ul>
-    public static class JSONConverter {
+public static class JSONConverter {
       /// <summary>
       ///   Converts an interest object into a string, which is conform with JSON-format.
       /// </summary>
@@ -39,31 +38,77 @@ namespace Shark {
           + " ]"
           + "}, " + Environment.NewLine;
 
-        string types = "{ \"topics\": [ "
+        string types = "{ \"types\": [ "
           + JSONConverter.semanticTagsToJSON(interest.Types)
           + " ]"
           + "}, " + Environment.NewLine;
 
-        string approvers = "{ \"topics\": [ "
+        string approvers = "{ \"approvers\": [ "
           + JSONConverter.peerSemanticTagsToJSON(interest.Approvers)
           + " ]"
           + "}, " + Environment.NewLine;
-        
 
-        json += topics + "," + Environment.NewLine;
-        //json += types + "," + Environment.NewLine;
-        //json += approvers + "," + Environment.NewLine;
-        //json += sender + "," + Environment.NewLine;
-        //json += recipients + "," + Environment.NewLine;
-        //json += locations + "," + Environment.NewLine;
-        //json += times + "," + Environment.NewLine;
-        //json += direction + "," + Environment.NewLine;
+        List<IPeerSemanticTag> senderlist = new List<IPeerSemanticTag>();
+        senderlist.Add(interest.Sender);
+        string sender = "{ \"sender\": "
+          + JSONConverter.peerSemanticTagsToJSON(senderlist)
+          + "}, " + Environment.NewLine;
 
+        string recipients = "{ \"recipients\": [ "
+          + JSONConverter.peerSemanticTagsToJSON(interest.Recipients)
+          + " ]"
+          + "}, " + Environment.NewLine;
+
+        string locations = "{ \"locations\": [ "
+         + JSONConverter.spatialSemanticTagsToJSON(interest.Locations)
+         + " ]"
+         + "}, " + Environment.NewLine;
+
+        string times = "{ \"times\": [ "
+         + JSONConverter.timeSemanticTagsToJSON(interest.Times)
+         + " ]"
+         + "}, " + Environment.NewLine;
+
+        string direction = "{ \"direction\": "
+         + interest.Direction
+         + "} " + Environment.NewLine;
+
+        json += topics + types + approvers + sender + recipients + locations + times + direction;
         json += Environment.NewLine + "}";
 
         return json;
       }
-      // TODO interests = interest { ',' interest };
+      
+      /// <summary>
+      ///   Serializes a list of interests into JSON-Format.
+      /// </summary>
+      /// <param name="interests">The List of interests which have to be serialized.</param>
+      /// <returns>The interests values as string. String is JSON conform.</returns>
+      public static string convertInterestsToJSON(IList<IInterest> interests) {
+        string json = "";
+        for (int i = 0; i < interests.Count; i++) {
+          if (i > 0) {
+            json += ", ";
+          }
+          json += JSONConverter.convertInterestToJSON(interests[i]);
+        }
+
+        return json;
+      }
+
+      // TODO convert KNOWLEDGES
+      public static string convertKnowledgeToJSON(IKnowledge ken) {
+        string json = "";
+
+        return json;
+      }
+
+      public static string convertKnowledgesToJSON(IKnowledge kens) {
+        string json = "";
+
+        return json;
+      }
+
 
       /// <summary>
       /// Format:
@@ -181,18 +226,32 @@ namespace Shark {
       }
 
       /// <summary>
-      /// 
+      /// Format:
+      ///   time                    = '{'
+      ///       from ','
+      ///       duration
+      ///   '}' ;
+      ///   from                    = '"from":' utcTime ',' unixTime ',' sharkTime ;
+      ///   utcTime                 = '{' '"utcTime":' ( https://www.ietf.org/rfc/rfc3339.txt Part 5.6 Date and Time on the Internet: Timestamps) '}' ;
+      ///   unixTime                = '{' '"unixTime":' number '}' ;
+      ///   sharkTime               = '{' '"sharkTime":' void '}' ;
+      ///   duration                = '"duration":' number ;
+      ///   
       /// </summary>
-      /// <param name="locations"></param>
+      /// <param name="times"></param>
       /// <returns></returns>
-      private static string timesToJSON(IList<Time> times) {
+      private static string timesToJSON(IList<ITime> times) {
         string json = "";
         for (int i = 0; i < times.Count; i++) {
           if (i > 0) {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"time\": " + times[i] + Environment.NewLine
+            + "\"from\": "
+              + "{ \"utcTime\": " + times[i].FromUtc + "}, "
+              + "{ \"unixTime\": " + times[i].FromUnix + "}, "
+              + "{ \"sharkTime\": " + times[i].FromShark + "}," + Environment.NewLine
+            + "\"duration\": " + times[i].Duration + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -208,7 +267,7 @@ namespace Shark {
       /// </summary>
       /// <param name="locations"></param>
       /// <returns></returns>
-      private static string locationsToJSON(IList<Location> locations) {
+      private static string locationsToJSON(IList<ILocation> locations) {
         string json = "";
         for (int i = 0; i < locations.Count; i++) {
           if (i > 0) {
@@ -231,7 +290,7 @@ namespace Shark {
       /// </summary>
       /// <param name="addresses"></param>
       /// <returns></returns>
-      private static string addressesToJSON(IList<Address> addresses) {
+      private static string addressesToJSON(IList<IAddress> addresses) {
         string json = "";
         for (int i = 0; i < addresses.Count; i++) {
           if (i > 0) {

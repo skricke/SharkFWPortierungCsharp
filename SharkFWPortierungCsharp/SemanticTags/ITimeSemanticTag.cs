@@ -1,5 +1,4 @@
-﻿using Shark.ASIP.SemanticTags;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Shark {
   namespace ASIP {
@@ -13,7 +12,7 @@ namespace Shark {
       /// <summary> Property for valid times of an TimeSemanticTag. </summary>
       ///
       /// <value> The times in between the SemanticTag is valid. </value>
-      IList<Time> Times { get; }
+      IList<ITime> Times { get; }
 
       // TODO add and remove Location times
       /// <summary>

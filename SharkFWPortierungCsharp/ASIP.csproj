@@ -35,15 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="ClassDiagram3.cd" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="ASIPCommand.cs" />
-    <Compile Include="ASIPContent.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Conversion\SharkConverter.cs" />
+    <Compile Include="IASIPContent.cs" />
     <Compile Include="IInfoMetaData.cs" />
     <Compile Include="IInformation.cs" />
     <Compile Include="IInformationData.cs" />
@@ -53,23 +47,30 @@
     <Compile Include="IMessageContent.cs" />
     <Compile Include="IMessageHeader.cs" />
     <Compile Include="IMessageSignature.cs" />
+    <Compile Include="Interest.cs" />
     <Compile Include="IOutMessage.cs" />
+    <Compile Include="Knowledge.cs" />
     <Compile Include="SemanticNets\ISpatialSemanticNet.cs" />
     <Compile Include="SemanticNets\ITimeSemanticNet.cs" />
     <Compile Include="SemanticNets\IPeerSemanticNet.cs" />
     <Compile Include="SemanticNets\IProperty.cs" />
     <Compile Include="SemanticNets\ISemanticNet.cs" />
     <Compile Include="ISharkVocabulary.cs" />
+    <Compile Include="SemanticNets\PeerSemanticNet.cs" />
+    <Compile Include="SemanticNets\Property.cs" />
+    <Compile Include="SemanticNets\SemanticNet.cs" />
+    <Compile Include="SemanticNets\SpatialSemanticNet.cs" />
+    <Compile Include="SemanticNets\TimeSemanticNet.cs" />
     <Compile Include="SemanticTags\Types\TimeType.cs" />
-    <Compile Include="SemanticTags\Types\Time.cs" />
-    <Compile Include="SemanticTags\Types\Address.cs" />
+    <Compile Include="SemanticTags\Types\ITime.cs" />
+    <Compile Include="SemanticTags\Types\IAddress.cs" />
     <Compile Include="SemanticTags\Types\AddressType.cs" />
     <Compile Include="IASIPEngine.cs" />
     <Compile Include="Directions.cs" />
     <Compile Include="IInterest.cs" />
     <Compile Include="Conversion\JSONConverter.cs" />
     <Compile Include="IKnowledge.cs" />
-    <Compile Include="SemanticTags\Types\Location.cs" />
+    <Compile Include="SemanticTags\Types\ILocation.cs" />
     <Compile Include="SemanticTags\IPeerSemanticTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SemanticTags\ISemanticTag.cs" />
@@ -79,7 +80,6 @@
     <Compile Include="Exception\SharkException.cs" />
     <Compile Include="SemanticTags\ISpatialSemanticTag.cs" />
     <Compile Include="SemanticTags\ITimeSemanticTag.cs" />
-    <Compile Include="TestClass1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

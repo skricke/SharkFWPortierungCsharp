@@ -3,8 +3,8 @@
 namespace Shark.ASIP {
   interface ITimeSemanticNet : ISemanticNet {
     /// <summary>
-    ///   The TimeSemanticTag represents the node in the time semantic net.
+    ///   The TimeSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>
-    new ITimeSemanticTag SemanticTag { get; set; }
+    new IDictionary<string, ITimeSemanticTag> SemanticTagsTable { get; set; }
   }
 }

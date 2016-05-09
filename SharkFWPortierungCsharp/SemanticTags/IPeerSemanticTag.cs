@@ -14,7 +14,7 @@ namespace Shark {
       /// <summary> Property with the addresses of the PeerSemanticTag. </summary>
       ///
       /// <value> The addresses. </value>
-      IList<Address> Addresses { get; }
+      IList<IAddress> Addresses { get; }
 
       /// <summary> Adds a TCP address to 'port'. </summary>
       ///
@@ -41,7 +41,7 @@ namespace Shark {
       /// <summary> Removes the address described by remAddress. </summary>
       ///
       /// <param name="remAddress"> The address wanted to be removed. </param>s
-      void removeAddress(Address remAddress);
+      void removeAddress(IAddress remAddress);
     }
   }
 }
