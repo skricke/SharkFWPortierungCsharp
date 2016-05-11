@@ -21,14 +21,14 @@ namespace Shark {
       /// <param name="endPoint"> The end point. </param>
       /// <param name="port">     The port. </param>
       /// <exception cref="SharkASIPIllegalArguementException"> Thrown if wrong Parameter given. </exception>
-      void addTCPAddress(string endPoint, int port);
+      void addTCPAddress(string endPoint, uint port);
 
       /// <summary> Adds a HTTP address to 'port'. </summary>
       ///
       /// <param name="endPoint"> The end point. </param>
       /// <param name="port">     The port. </param>
       /// <exception cref="SharkASIPIllegalArguementException"> Thrown if wrong Parameter given. </exception>
-      void addHTTPAddress(string endPoint, int port);
+      void addHTTPAddress(string endPoint, uint port);
 
       /// <summary> Adds a mail address. </summary>
       ///
@@ -36,7 +36,7 @@ namespace Shark {
       /// <param name="endPoint"> The end point. </param>
       /// <param name="mbSize">   Size of the megabytes. </param>
       /// <exception cref="SharkASIPIllegalArguementException"> Thrown if wrong Parameter given. </exception>
-      void addMAILAddress(string user, string endPoint, int mbSize);
+      void addMAILAddress(string user, string endPoint, uint mbSize);
 
       /// <summary> Removes the address described by remAddress. </summary>
       ///

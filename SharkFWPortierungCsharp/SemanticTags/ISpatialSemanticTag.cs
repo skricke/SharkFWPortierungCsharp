@@ -22,7 +22,7 @@ namespace Shark {
       /// <summary>
       ///   Adds a location to the property of Locations.
       /// </summary>
-      void addLocation();
+      void addLocation(ILocation newLocation);
 
       /// <summary>
       ///   Removes the Location on the given index.

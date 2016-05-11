@@ -6,15 +6,15 @@
     /// <remarks> sk, 15.03.2016. </remarks>
     public interface IAddress {
 
-      /// <summary> Gets or sets the type of an Address. </summary>
+      /// <summary> Gets the type of an Address. </summary>
       ///
       /// <value> The Address type. </value>
-      AddressType Type { get; set; }
+      AddressType Type { get; }
 
       /// <summary> Gets the complete Address. </summary>
       ///
       /// <value> The real address. </value>
-      string Address { get; }
+      string CompleteAddress { get; }
 
       /// <summary>
       ///   Generates a valid TCP-Address from the given endPoint. Format looks like: 

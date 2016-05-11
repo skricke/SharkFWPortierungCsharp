@@ -4,13 +4,18 @@
   ///   by its subject identifier.
   /// </summary>
   public interface ISharkVocabulary {
-    // TODO vocabulary              = '{' topicDim ',' typeDim ',' peerDim ',' locationDim ',' timeDim '}' ;
+    // TODO vocabulary              = '{' 
+    ISemanticNet TopicDim { get; }
+    ISemanticNet TypeDim { get; }
+    IPeerSemanticNet PeerDim { get; }
+    ISpatialSemanticNet LocationDim { get; }
+    ITimeSemanticNet TimeDim { get; }
     //### VOCABULARY ###
     //
-      //topicDim                = semanticNet ;
-      //typeDim                 = semanticNet ;
-      //peerDim                 = peerSemanticTagNet ;
-      //locationDim             = spatialSemanticTagNet ;
-      //timeDim                 = timeSemanticTagNet ;
+    //topicDim                = semanticNet ;
+    //typeDim                 = semanticNet ;
+    //peerDim                 = peerSemanticTagNet ;
+    //locationDim             = spatialSemanticTagNet ;
+    //timeDim                 = timeSemanticTagNet ;
   }
 }

@@ -12,7 +12,9 @@
       /// <summary> An enum constant representing the HTTP option. </summary>
       HTTP,
       /// <summary> An enum constant representing the MAIL option. </summary>
-      MAIL
+      MAIL,
+      /// <summary> Representing no actual Address. </summary>
+      NULL
     }
   }
 }

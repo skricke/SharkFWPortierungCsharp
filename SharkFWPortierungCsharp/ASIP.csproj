@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ASIPCommand.cs" />
+    <Compile Include="ASIPEngine.cs" />
     <Compile Include="Conversion\SharkConverter.cs" />
     <Compile Include="IASIPContent.cs" />
     <Compile Include="IInfoMetaData.cs" />
@@ -47,9 +48,17 @@
     <Compile Include="IMessageContent.cs" />
     <Compile Include="IMessageHeader.cs" />
     <Compile Include="IMessageSignature.cs" />
+    <Compile Include="InfoMetaData.cs" />
+    <Compile Include="Information.cs" />
+    <Compile Include="InformationData.cs" />
+    <Compile Include="InfoSpace.cs" />
     <Compile Include="Interest.cs" />
     <Compile Include="IOutMessage.cs" />
     <Compile Include="Knowledge.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="MessageContent.cs" />
+    <Compile Include="MessageHeader.cs" />
+    <Compile Include="MessageSignature.cs" />
     <Compile Include="SemanticNets\ISpatialSemanticNet.cs" />
     <Compile Include="SemanticNets\ITimeSemanticNet.cs" />
     <Compile Include="SemanticNets\IPeerSemanticNet.cs" />
@@ -61,6 +70,14 @@
     <Compile Include="SemanticNets\SemanticNet.cs" />
     <Compile Include="SemanticNets\SpatialSemanticNet.cs" />
     <Compile Include="SemanticNets\TimeSemanticNet.cs" />
+    <Compile Include="SemanticTags\PeerSemanticTag.cs" />
+    <Compile Include="SemanticTags\SemanticTag.cs" />
+    <Compile Include="SemanticTags\SemanticTagSet.cs" />
+    <Compile Include="SemanticTags\SpatialSemanticTag.cs" />
+    <Compile Include="SemanticTags\TimeSemanticTag.cs" />
+    <Compile Include="SemanticTags\Types\Address.cs" />
+    <Compile Include="SemanticTags\Types\Location.cs" />
+    <Compile Include="SemanticTags\Types\LocationPlaceholder.cs" />
     <Compile Include="SemanticTags\Types\TimeType.cs" />
     <Compile Include="SemanticTags\Types\ITime.cs" />
     <Compile Include="SemanticTags\Types\IAddress.cs" />
@@ -80,6 +97,7 @@
     <Compile Include="Exception\SharkException.cs" />
     <Compile Include="SemanticTags\ISpatialSemanticTag.cs" />
     <Compile Include="SemanticTags\ITimeSemanticTag.cs" />
+    <Compile Include="SharkVocabulary.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

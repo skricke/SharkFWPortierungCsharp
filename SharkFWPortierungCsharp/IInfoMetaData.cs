@@ -3,6 +3,6 @@
     
     string Name { get; set; }
     uint Offset { get; set; }
-    uint length { get; set; }
+    uint Length { get; set; }
   }
 }

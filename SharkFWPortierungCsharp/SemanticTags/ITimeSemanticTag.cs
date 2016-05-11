@@ -18,7 +18,7 @@ namespace Shark {
       /// <summary>
       ///   Adds a valid time period.
       /// </summary>
-      void addTime();
+      void addTime(ITime time);
 
       /// <summary>
       ///   Remove time data on the given index.

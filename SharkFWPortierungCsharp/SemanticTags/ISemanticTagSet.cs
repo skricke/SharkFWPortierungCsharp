@@ -34,13 +34,13 @@ namespace Shark {
       ISemanticTag createSemanticTag(string name, string[] sis);
       // TODO ??Java-Version has additional method for single si - neccessary?
 
-      /// <summary> Merge semantic tag sets. Only unknown Tags will be copied into the actual semantic tag set, with its properties.</summary>
+      /// <summary>Merge a semantic tag set to the actual set. Only unknown Tags will be copied into the actual semantic tag set, with its properties.</summary>
       ///
       /// <param name="tagSet"> Set the tags belongs to. </param>
       ///
-      /// <returns> A SemanticTag. </returns>
+      /// <returns> The merged SemanticTagSet. </returns>
       /// <exception cref="SharkASIPException">Throws an Exception if the Tags couldn´t be merged.</exception>
-      ISemanticTag mergeSemanticTags(ISemanticTagSet tagSet);
+      ISemanticTagSet mergeSemanticTags(ISemanticTagSet tagSet);
 
       /// <summary> Adds a semantic tag copy. If the same tag already exists, only the new sis will be added to the exsitent tag. 
       ///           Otherwise a new tag is add. </summary>

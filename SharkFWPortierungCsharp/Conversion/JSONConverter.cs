@@ -5,19 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.Conversion { 
-    /// <summary>
-    /// Provides JSON-Conversion for ASIP-Messages in Shark Framework.
-    /// </summary>
-    /// 
-    /// Methods can be used to convert from and to JSON. 
-    /// Or from JSON to Class, of corse.
-    /// 
-    /// Following Objects are supported:
-    /// <ul>
-    ///   <li>Interest</li>
-    ///   <li>Knowledge</li>
-    /// </ul>
-public static class JSONConverter {
+  /// <summary>
+  /// Provides JSON-Conversion for ASIP-Messages in Shark Framework.
+  /// </summary>
+  /// 
+  /// Methods can be used to convert from and to JSON. 
+  /// Or from JSON to Class, of corse.
+  /// 
+  /// Following Objects are supported:
+  /// <ul>
+  ///   <li>Interest</li>
+  ///   <li>Knowledge</li>
+  /// </ul>
+  public static class JSONConverter {
       /// <summary>
       ///   Converts an interest object into a string, which is conform with JSON-format.
       /// </summary>
@@ -323,7 +323,5 @@ public static class JSONConverter {
 
         return json;
       }
-    }
-
-  }
+    }  
 }

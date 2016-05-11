@@ -1,4 +1,6 @@
-﻿namespace Shark.ASIP {
+﻿using System.Collections.Generic;
+
+namespace Shark.ASIP {
 
   /// <summary> A semantic tag. </summary>
   ///
@@ -14,7 +16,7 @@
     ///
     /// <value> The subjectIdentifiers. </value>
     /// <exception cref="SharkASIPIllegalArguementException">Thrown if the SI has a wrong URI-format.</exception>
-    string[] SIS { get; }
+    IList<string> SIS { get; }
 
     /// <summary> Adds the subject identifier. </summary>
     ///
