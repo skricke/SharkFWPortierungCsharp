@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  class MessageContent : IMessageContent {
+  public class MessageContent : IMessageContent {
     /// <summary>
     ///   The logical sender of the content.
     /// </summary>

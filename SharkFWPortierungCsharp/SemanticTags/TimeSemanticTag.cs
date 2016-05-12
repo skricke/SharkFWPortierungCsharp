@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags {
-  class TimeSemanticTag : SemanticTag, ITimeSemanticTag {
+  public class TimeSemanticTag : SemanticTag, ITimeSemanticTag {
     /// <summary> Property for valid times of an TimeSemanticTag. </summary>
     ///
     /// <value> The times in between the SemanticTag is valid. </value>

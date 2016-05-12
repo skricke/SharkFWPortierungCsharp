@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticNets {
-  class TimeSemanticNet : SemanticNet, ITimeSemanticNet {
-    ITimeSemanticTag ITimeSemanticNet.SemanticTag { get; set; }
+  public class TimeSemanticNet : SemanticNet, ITimeSemanticNet {
+    /// <summary>
+    ///   The TimeSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
+    /// </summary>
+    public new IDictionary<string, ITimeSemanticTag> SemanticTagsTable { get; set; }
   }
 }

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags.Types {
-  class Address : IAddress {
+  public class Address : IAddress {
     public AddressType Type { get; private set; }
     public string CompleteAddress { get; private set; }
 

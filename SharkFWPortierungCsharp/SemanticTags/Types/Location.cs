@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags.Types {
-  class Location :ILocation {
+  public class Location :ILocation {
     // TODO EWKT
   }
 }

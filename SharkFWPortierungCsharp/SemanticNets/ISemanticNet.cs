@@ -4,7 +4,7 @@ namespace Shark.ASIP {
   /// <summary>
   ///   Organizes Semantic Tags like a net. The tags can be set in relationship to each other. Every relationship contans two IDs of the associated SemanticTags.
   /// </summary>
-  interface ISemanticNet {
+  public interface ISemanticNet {
     /// <summary>
     ///   The SemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>

@@ -5,8 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags {
-  class PeerSemanticTag : SemanticTag, IPeerSemanticTag {
+  public class PeerSemanticTag : SemanticTag, IPeerSemanticTag {
     public IList<IAddress> Addresses { get; }
+
+    public PeerSemanticTag(string name, IList<string> siList) : base(name, siList) { }
+    public PeerSemanticTag(string name, IList<string> siList, IList<IAddress> addresses) : this(name, siList) {
+      Addresses = addresses;
+    }
 
     /// <summary>
     /// 

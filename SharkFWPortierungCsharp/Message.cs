@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  class Message : IMessage {
+  public class Message : IMessage {
     /// <summary>
     ///   The header of the message with meta data for used version, format, sender/receiver, encryption and signature.
     /// </summary>

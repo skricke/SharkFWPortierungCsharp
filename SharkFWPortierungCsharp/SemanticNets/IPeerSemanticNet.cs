@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace Shark.ASIP {
-  interface IPeerSemanticNet : ISemanticNet {
+  public interface IPeerSemanticNet : ISemanticNet {
     /// <summary>
     ///   The PeerSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>

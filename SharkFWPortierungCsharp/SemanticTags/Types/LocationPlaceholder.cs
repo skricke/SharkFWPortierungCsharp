@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags.Types {
-  class LocationPlaceholder : ILocation {
+  public class LocationPlaceholder : ILocation {
     string Name { get; set; }
 
     public LocationPlaceholder(string locationName) {

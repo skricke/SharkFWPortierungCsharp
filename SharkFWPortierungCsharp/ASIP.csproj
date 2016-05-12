@@ -37,6 +37,7 @@
   <ItemGroup>
     <Compile Include="ASIPCommand.cs" />
     <Compile Include="ASIPEngine.cs" />
+    <Compile Include="Conversion\JSONConverterJavaStyle.cs" />
     <Compile Include="Conversion\SharkConverter.cs" />
     <Compile Include="IASIPContent.cs" />
     <Compile Include="IInfoMetaData.cs" />

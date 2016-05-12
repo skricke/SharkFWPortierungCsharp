@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  class InfoSpace : Interest, IInfoSpace {
+  public class InfoSpace : Interest, IInfoSpace {
     //private InfoSpace() { }
     public InfoSpace(Directions direction) : base(direction) { }
 

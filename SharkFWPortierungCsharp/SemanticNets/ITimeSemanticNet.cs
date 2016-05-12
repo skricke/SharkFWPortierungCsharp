@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace Shark.ASIP {
-  interface ITimeSemanticNet : ISemanticNet {
+  public interface ITimeSemanticNet : ISemanticNet {
     /// <summary>
     ///   The TimeSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>

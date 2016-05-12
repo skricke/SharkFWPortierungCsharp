@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticNets {
-  class SemanticNet : ISemanticNet {
+  public class SemanticNet : ISemanticNet {
     public IList<IProperty> Relations { get; }
     public IDictionary<string, ISemanticTag> SemanticTagsTable { get; set; }
     

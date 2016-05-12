@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags {
-  class SpatialSemanticTag : SemanticTag, ISpatialSemanticTag {
+  public class SpatialSemanticTag : SemanticTag, ISpatialSemanticTag {
     /// <summary> Location Property returns spatial information.
     ///           Locations are described via WKT. </summary>
     /// <see href="http://docs.opengeospatial.org/is/12-063r5/12-063r5.html"/>

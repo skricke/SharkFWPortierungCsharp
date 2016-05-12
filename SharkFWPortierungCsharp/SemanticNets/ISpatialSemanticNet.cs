@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace Shark.ASIP {
-  interface ISpatialSemanticNet : ISemanticNet {
+  public interface ISpatialSemanticNet : ISemanticNet {
     /// <summary>
     ///   The SpatialSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>

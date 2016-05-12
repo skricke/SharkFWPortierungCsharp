@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticNets {
-  class Property : IProperty {
+  public class Property : IProperty {
     public string Name { get; set; }
     public string SourceId { get; set; }
     public string TargetId { get; set; }

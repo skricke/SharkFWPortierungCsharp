@@ -17,7 +17,7 @@ namespace Shark.ASIP.Conversion {
   ///   <li>Interest</li>
   ///   <li>Knowledge</li>
   /// </ul>
-  public static class JSONConverter {
+  public static class JSONConverterJavaStyle {
       /// <summary>
       ///   Converts an interest object into a string, which is conform with JSON-format.
       /// </summary>
@@ -33,43 +33,43 @@ namespace Shark.ASIP.Conversion {
         //  + "\""
         //  + "}"; // | void
 
-        string topics = "{ \"topics\":\"["
-          + JSONConverter.semanticTagsToJSON(interest.Topics) 
+        string topics = "{ \"TOPICS\":\"["
+          + JSONConverterJavaStyle.semanticTagsToJSON(interest.Topics) 
           + "]\""
           + "}, " + Environment.NewLine;
 
-        string types = "{ \"types\":\"["
-          + JSONConverter.semanticTagsToJSON(interest.Types)
+        string types = "{ \"TYPES\":\"["
+          + JSONConverterJavaStyle.semanticTagsToJSON(interest.Types)
           + "]\""
           + "}, " + Environment.NewLine;
 
-        string approvers = "{ \"approvers\":\"["
-          + JSONConverter.peerSemanticTagsToJSON(interest.Approvers)
+        string approvers = "{ \"APPROVERS\":\"["
+          + JSONConverterJavaStyle.peerSemanticTagsToJSON(interest.Approvers)
           + "]\""
           + "}, " + Environment.NewLine;
 
         List<IPeerSemanticTag> senderlist = new List<IPeerSemanticTag>();
         senderlist.Add(interest.Sender);
-        string sender = "{ \"sender\":\""
-          + JSONConverter.peerSemanticTagsToJSON(senderlist)
+        string sender = "{ \"SENDER\":\""
+          + JSONConverterJavaStyle.peerSemanticTagsToJSON(senderlist)
           + "\"}, " + Environment.NewLine;
 
-        string recipients = "{ \"recipients\":\"["
-          + JSONConverter.peerSemanticTagsToJSON(interest.Recipients)
+        string recipients = "{ \"RECIPIENTS\":\"["
+          + JSONConverterJavaStyle.peerSemanticTagsToJSON(interest.Recipients)
           + "]\""
           + "}, " + Environment.NewLine;
 
-        string locations = "{ \"locations\":\"["
-         + JSONConverter.spatialSemanticTagsToJSON(interest.Locations)
+        string locations = "{ \"LOCATIONS\":\"["
+         + JSONConverterJavaStyle.spatialSemanticTagsToJSON(interest.Locations)
          + "]\""
          + "}, " + Environment.NewLine;
 
-        string times = "{ \"times\":\"["
-         + JSONConverter.timeSemanticTagsToJSON(interest.Times)
+        string times = "{ \"TIMES\":\"["
+         + JSONConverterJavaStyle.timeSemanticTagsToJSON(interest.Times)
          + "]\""
          + "}, " + Environment.NewLine;
 
-        string direction = "{ \"direction\":\""
+        string direction = "{ \"DIRECTION\":\""
          + interest.Direction
          + "\"} " + Environment.NewLine;
 
@@ -90,7 +90,7 @@ namespace Shark.ASIP.Conversion {
           if (i > 0) {
             json += ", ";
           }
-          json += JSONConverter.convertInterestToJSON(interests[i]);
+          json += JSONConverterJavaStyle.convertInterestToJSON(interests[i]);
         }
 
         return json;
@@ -132,8 +132,8 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\"" + Environment.NewLine
+            + "\"NAME\":\"" + tags[i].Name + "\"," + Environment.NewLine
+            + "\"SIS\":\"[" + JSONConverterJavaStyle.sisToJSON(tags[i].SIS) + "]\"" + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -160,9 +160,9 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-            + "\"addresses\":\"[" + JSONConverter.addressesToJSON(tags[i].Addresses) + "]\"" + Environment.NewLine
+            + "\"NAME\":\"" + tags[i].Name + "\"," + Environment.NewLine
+            + "\"SIS\":\"[" + JSONConverterJavaStyle.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
+            + "\"ADDRESSES\":\"[" + JSONConverterJavaStyle.addressesToJSON(tags[i].Addresses) + "]\"" + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -188,9 +188,9 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-            + "\"locations\":\"[" + JSONConverter.locationsToJSON(tags[i].Locations) + "]\"" + Environment.NewLine
+            + "\"NAME\":\"" + tags[i].Name + "\"," + Environment.NewLine
+            + "\"SIS\":\"[" + JSONConverterJavaStyle.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
+            + "\"LOCATIONS\":\"[" + JSONConverterJavaStyle.locationsToJSON(tags[i].Locations) + "]\"" + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -216,9 +216,9 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-            + "\"times\":\"[" + JSONConverter.timesToJSON(tags[i].Times) + "]\"" + Environment.NewLine
+            + "\"NAME\":\"" + tags[i].Name + "\"," + Environment.NewLine
+            + "\"SIS\":\"[" + JSONConverterJavaStyle.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
+            + "\"TIMES\":\"[" + JSONConverterJavaStyle.timesToJSON(tags[i].Times) + "]\"" + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -247,11 +247,11 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"from\": "
-              + "{ \"utcTime\":\"" + times[i].FromUtc + "\"}, "
-              + "{ \"unixTime\":\"" + times[i].FromUnix + "\"}, "
-              + "{ \"sharkTime\":\"" + times[i].FromShark + "\"}," + Environment.NewLine
-            + "\"duration\":\"" + times[i].Duration + "\"" + Environment.NewLine
+            + "\"FROM\": "
+              + "{ \"UTCTIME\":\"" + times[i].FromUtc + "\"}, "
+              + "{ \"UNIXTIME\":\"" + times[i].FromUnix + "\"}, "
+              + "{ \"SHARKTIME\":\"" + times[i].FromShark + "\"}," + Environment.NewLine
+            + "\"DURATION\":\"" + times[i].Duration + "\"" + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -274,7 +274,7 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"location\":\"" + locations[i] + Environment.NewLine
+            + "\"LOCATION\":\"" + locations[i] + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -297,7 +297,7 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"address\":\"" + addresses[i] + Environment.NewLine
+            + "\"ADDRESS\":\"" + addresses[i] + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 
@@ -318,7 +318,7 @@ namespace Shark.ASIP.Conversion {
           if(i > 0) {
             json += ", ";
           }
-          json += "\"uri\":\"" + sis[i] + "\""; 
+          json += "\"URI\":\"" + sis[i] + "\""; 
         }        
 
         return json;

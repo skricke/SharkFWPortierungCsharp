@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  class InfoMetaData : IInfoMetaData {
+  public class InfoMetaData : IInfoMetaData {
     public string Name { get; set; }
     public uint Offset { get; set; }
     public uint Length { get; set; }

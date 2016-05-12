@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  class InformationData : IInformationData {
+  public class InformationData : IInformationData {
     public IInfoSpace InfoSpace { get; }
     public IInfoMetaData MetaInfos { get; }
 

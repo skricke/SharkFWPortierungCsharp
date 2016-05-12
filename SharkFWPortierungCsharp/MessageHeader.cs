@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  class MessageHeader : IMessageHeader {
+  public class MessageHeader : IMessageHeader {
     /// <summary>
     ///   The actual version number of the ASIP.
     /// </summary>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  class ASIPEngine : IASIPEngine {
+  public class ASIPEngine : IASIPEngine {
     /// <summary>
     ///   Send the insert command for insertion of the Knowledge.
     /// </summary>

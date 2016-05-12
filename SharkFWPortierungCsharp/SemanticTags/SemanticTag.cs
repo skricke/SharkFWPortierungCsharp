@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags {
-  class SemanticTag : ISemanticTag {
+  public class SemanticTag : ISemanticTag {
     public string Name { get; set; }
     /// <summary>
     ///   URIs as subject identifiers. http://www.w3.org/Addressing/URL/5_URI_BNF.html

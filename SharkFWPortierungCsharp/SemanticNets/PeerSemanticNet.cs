@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticNets {
-  class PeerSemanticNet : SemanticNet, IPeerSemanticNet {
-    IPeerSemanticTag IPeerSemanticNet.SemanticTag { get; set; }
+  public class PeerSemanticNet : SemanticNet, IPeerSemanticNet {
+    /// <summary>
+    ///   The PeerSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
+    /// </summary>
+    public new IDictionary<string, IPeerSemanticTag> SemanticTagsTable { get; set; }
   }
 }

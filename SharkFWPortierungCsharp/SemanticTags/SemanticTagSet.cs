@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP.SemanticTags {
-  class SemanticTagSet : ISemanticTagSet {
+  public class SemanticTagSet : ISemanticTagSet {
     // 
     // addSemanticTag added and has function of merge, but without return-value
     // mergeSemanticTags is merging two sets in the meaning of merge.
