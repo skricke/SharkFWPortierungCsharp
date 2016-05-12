@@ -25,7 +25,7 @@ namespace Shark.ASIP.SemanticTags.Types {
     /// <returns>A valid address for usage in shark system.</returns>
     /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
     public string generateHTTPAddress(string endPoint) {
-      checkParameter(endPoint);
+      //checkParameter(endPoint);
       string httpEndpoint = "http://" + endPoint;
       Type = AddressType.HTTP;
       CompleteAddress = httpEndpoint;
@@ -62,7 +62,7 @@ namespace Shark.ASIP.SemanticTags.Types {
     /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
     public string generateMailAddress(string user, string endPoint) {
       // TODO endPoint verifizieren
-      checkParameter(user + endPoint);
+      //checkParameter(user + endPoint);
       string mailEndpoint = "mail://" + user + "@" + endPoint;
       Type = AddressType.MAIL;
       CompleteAddress = mailEndpoint;
@@ -98,7 +98,7 @@ namespace Shark.ASIP.SemanticTags.Types {
     /// <returns>A valid address for usage in shark system.</returns>
     /// <exception cref="SharkASIPIllegalArguementException">Thrown if a parameter uses characters, which aren´t allowed.</exception>
     public string generateTCPAddress(string endPoint) {
-      checkParameter(endPoint);
+      //checkParameter(endPoint);
       string tcpEndpoint = "tcp://" + endPoint;
       Type = AddressType.TCP;
       CompleteAddress = tcpEndpoint;

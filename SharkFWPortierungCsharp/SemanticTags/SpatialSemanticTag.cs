@@ -19,6 +19,13 @@ namespace Shark.ASIP.SemanticTags {
     public SpatialSemanticTag(string name, IList<string> siList, IList<ILocation> locations) : this(name, siList) {
       Locations = locations;
     }
+
+    public SpatialSemanticTag(string name, string si, ILocation location) : base(name, si) {
+      IList<ILocation> locationList = new List<ILocation>();
+      locationList.Add(location);
+      Locations = locationList;
+    }
+
     // TODO add and remove Location geometry with WKT-Support
     /// <summary>
     ///   Adds a location to the property of Locations.

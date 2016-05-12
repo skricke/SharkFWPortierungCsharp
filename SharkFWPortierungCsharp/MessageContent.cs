@@ -27,14 +27,24 @@ namespace Shark.ASIP {
     /// </summary>
     public IMessageSignature Signature { get; set; }
 
-    public MessageContent(IPeerSemanticTag logicalSender, bool signed, ASIPCommand command, 
+    private MessageContent() { }
+    public MessageContent(IPeerSemanticTag logicalSender, bool signed, ASIPCommand command,
+                          IASIPContent content, IMessageSignature signature) {
+      LogicalSender = logicalSender;
+      Signed = signed;
+      Command = command;
+      Content = new List<IASIPContent>();
+      Content.Add(content);
+      Signature = signature;
+    }
+
+    public MessageContent(IPeerSemanticTag logicalSender, bool signed, ASIPCommand command,
                           IList<IASIPContent> content, IMessageSignature signature) {
       LogicalSender = logicalSender;
       Signed = signed;
       Command = command;
       Content = content;
       Signature = signature;
-
     }
 
     /// <summary>

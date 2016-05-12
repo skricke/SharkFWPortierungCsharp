@@ -8,7 +8,12 @@ namespace Shark.ASIP.SemanticNets {
   public class SemanticNet : ISemanticNet {
     public IList<IProperty> Relations { get; }
     public IDictionary<string, ISemanticTag> SemanticTagsTable { get; set; }
-    
+
+    public SemanticNet() {
+      Relations = new List<IProperty>();
+      SemanticTagsTable = new Dictionary<string, ISemanticTag>();
+    }
+
     public void addRelation(IProperty property) {
       if (!existingRelation(property)) {
         Relations.Add(property);

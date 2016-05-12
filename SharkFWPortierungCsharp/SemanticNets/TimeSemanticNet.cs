@@ -10,5 +10,9 @@ namespace Shark.ASIP.SemanticNets {
     ///   The TimeSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>
     public new IDictionary<string, ITimeSemanticTag> SemanticTagsTable { get; set; }
+
+    public TimeSemanticNet() {
+      SemanticTagsTable = new Dictionary<string, ITimeSemanticTag>();
+    }
   }
 }

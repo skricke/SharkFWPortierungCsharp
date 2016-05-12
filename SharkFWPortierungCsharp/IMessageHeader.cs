@@ -26,7 +26,7 @@ namespace Shark.ASIP {
     /// <summary>
     ///   Optional List of all receiver SemanticTags of the message.
     /// </summary>
-    IList<ISemanticTag> Receiver { get; }
+    IList<IPeerSemanticTag> Receiver { get; }
     /// <summary>
     ///   Shows if the message was signed with a signature or not.
     /// </summary>
@@ -40,11 +40,11 @@ namespace Shark.ASIP {
     ///   Adds a receiver to the list of SemanticTags.
     /// </summary>
     /// <param name="receiver">The new (additional) receiver of the message.</param>
-    void addReceiver(ISemanticTag receiver);
+    void addReceiver(IPeerSemanticTag receiver);
     /// <summary>
     ///   Removes the first existing receiver from the Receiver list or does nothing if not found.
     /// </summary>
     /// <param name="receiver">The receiver to be deleted from the receive-list.</param>
-    void removeReceiver(ISemanticTag receiver);
+    void removeReceiver(IPeerSemanticTag receiver);
   }
 }

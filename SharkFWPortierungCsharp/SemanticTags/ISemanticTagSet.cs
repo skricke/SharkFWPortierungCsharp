@@ -27,6 +27,17 @@ namespace Shark {
       /// TODO: two functionalities - redesign?
       /// 
       /// <param name="name"> The semantic tag`s name. </param>
+      /// <param name="si">  The first intial subject identifiers. </param>
+      ///
+      /// <returns> The created semantic tag. </returns>
+      /// <exception cref="SharkASIPException">Throws an Exception if an identical tag already exists.</exception>
+      ISemanticTag createSemanticTag(string name, string si);
+
+      /// <summary> Creates a semantic tag from given name and subject identifiers and adds it to the SemanticTags,
+      ///           but only if no identical tag already exists in the set.</summary>
+      /// TODO: two functionalities - redesign?
+      /// 
+      /// <param name="name"> The semantic tag`s name. </param>
       /// <param name="sis">  The subject identifiers. </param>
       ///
       /// <returns> The created semantic tag. </returns>

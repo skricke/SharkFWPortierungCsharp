@@ -31,5 +31,10 @@ namespace Shark.ASIP {
     ///   Contains the TimeSemanticTags connected in a semantic net to represent the time dimension.
     /// </summary>
     public ITimeSemanticNet TimeDim { get; }
+
+    private SharkVocabulary() { }
+    public SharkVocabulary(ISemanticNet TopicDim, ISemanticNet TypeDim, IPeerSemanticNet PeerDim, ISpatialSemanticNet LocationDim, ITimeSemanticNet TimeDim) {
+
+    }
   }
 }

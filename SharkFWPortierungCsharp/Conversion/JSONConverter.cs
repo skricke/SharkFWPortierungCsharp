@@ -27,14 +27,14 @@ namespace Shark.ASIP.Conversion {
         // TODO Complete JSON-Method and comment it
         string json = "{" + Environment.NewLine;
 
-        //String topics = "\"topics\": {" + Environment.NewLine
-        //  + "\""
-        //  + interest.Topics // TODO Conversion of SemanticTags
-        //  + "\""
-        //  + "}"; // | void
-
+      //String topics = "\"topics\": {" + Environment.NewLine
+      //  + "\""
+      //  + interest.Topics // TODO Conversion of SemanticTags
+      //  + "\""
+      //  + "}"; // | void
+      if (interest != null) {
         string topics = "{ \"topics\":\"["
-          + JSONConverter.semanticTagsToJSON(interest.Topics) 
+          + JSONConverter.semanticTagsToJSON(interest.Topics)
           + "]\""
           + "}, " + Environment.NewLine;
 
@@ -74,6 +74,7 @@ namespace Shark.ASIP.Conversion {
          + "\"} " + Environment.NewLine;
 
         json += topics + types + approvers + sender + recipients + locations + times + direction;
+      }
         json += Environment.NewLine + "}";
 
         return json;
@@ -86,13 +87,14 @@ namespace Shark.ASIP.Conversion {
       /// <returns>The interests values as string. String is JSON conform.</returns>
       public static string convertInterestsToJSON(IList<IInterest> interests) {
         string json = "";
-        for (int i = 0; i < interests.Count; i++) {
-          if (i > 0) {
-            json += ", ";
+        if (interests != null) {
+          for (int i = 0; i < interests.Count; i++) {
+            if (i > 0) {
+              json += ", ";
+            }
+            json += JSONConverter.convertInterestToJSON(interests[i]);
           }
-          json += JSONConverter.convertInterestToJSON(interests[i]);
         }
-
         return json;
       }
 
@@ -126,17 +128,20 @@ namespace Shark.ASIP.Conversion {
       private static string semanticTagsToJSON(ISemanticTagSet tagset)  {
         IList<ISemanticTag> tags = tagset.SemanticTags;
         string json =  "";
-        //foreach (ISemanticTag tag in tags.SemanticTags) {
-        for (int i = 0; i < tags.Count; i++) {
-          if (i > 0) {
-            json += ", ";
+      //foreach (ISemanticTag tag in tags.SemanticTags) {
+        if (tags != null) {
+          if (tags != null) {
+            for (int i = 0; i < tags.Count; i++) {
+              if (i > 0) {
+                json += ", ";
+              }
+              json += "{" + Environment.NewLine
+                + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
+                + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\"" + Environment.NewLine
+                + "}" + Environment.NewLine;
+            }
           }
-          json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\"" + Environment.NewLine
-            + "}" + Environment.NewLine;
         }
-
         return json;
       }
 
@@ -152,21 +157,24 @@ namespace Shark.ASIP.Conversion {
       /// <param name="tags">The PeerSemanticTags to be converted.</param>
       /// <returns></returns>
       private static string peerSemanticTagsToJSON(IList<IPeerSemanticTag> tags) {
+        
         //IList<ISemanticTag> tags = tagset.SemanticTags;
         string json = "";
         //foreach (ISemanticTag tag in tags.SemanticTags) {
+        if (tags != null) {
         for (int i = 0; i < tags.Count; i++) {
-          if (i > 0) {
-            json += ", ";
+            if (i > 0) {
+              json += ", ";
+            }
+            json += "{" + Environment.NewLine
+              + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
+              + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
+              + "\"addresses\":\"[" + JSONConverter.addressesToJSON(tags[i].Addresses) + "]\"" + Environment.NewLine
+              + "}" + Environment.NewLine;
           }
-          json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-            + "\"addresses\":\"[" + JSONConverter.addressesToJSON(tags[i].Addresses) + "]\"" + Environment.NewLine
-            + "}" + Environment.NewLine;
         }
-
-        return json;
+        return json; 
+        
       }
 
       /// <summary>
@@ -182,18 +190,19 @@ namespace Shark.ASIP.Conversion {
       private static string spatialSemanticTagsToJSON(IList<ISpatialSemanticTag> tags) {
         //IList<ISemanticTag> tags = tagset.SemanticTags;
         string json = "";
-        //foreach (ISemanticTag tag in tags.SemanticTags) {
-        for (int i = 0; i < tags.Count; i++) {
-          if (i > 0) {
-            json += ", ";
+      //foreach (ISemanticTag tag in tags.SemanticTags) {
+        if (tags != null) {
+          for (int i = 0; i < tags.Count; i++) {
+            if (i > 0) {
+              json += ", ";
+            }
+            json += "{" + Environment.NewLine
+              + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
+              + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
+              + "\"locations\":\"[" + JSONConverter.locationsToJSON(tags[i].Locations) + "]\"" + Environment.NewLine
+              + "}" + Environment.NewLine;
           }
-          json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-            + "\"locations\":\"[" + JSONConverter.locationsToJSON(tags[i].Locations) + "]\"" + Environment.NewLine
-            + "}" + Environment.NewLine;
         }
-
         return json;
       }
 
@@ -210,18 +219,19 @@ namespace Shark.ASIP.Conversion {
       private static string timeSemanticTagsToJSON(IList<ITimeSemanticTag> tags) {
         //IList<ISemanticTag> tags = tagset.SemanticTags;
         string json = "";
-        //foreach (ISemanticTag tag in tags.SemanticTags) {
-        for (int i = 0; i < tags.Count; i++) {
-          if (i > 0) {
-            json += ", ";
+      //foreach (ISemanticTag tag in tags.SemanticTags) {
+        if (tags != null) {
+          for (int i = 0; i < tags.Count; i++) {
+            if (i > 0) {
+              json += ", ";
+            }
+            json += "{" + Environment.NewLine
+              + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
+              + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
+              + "\"times\":\"[" + JSONConverter.timesToJSON(tags[i].Times) + "]\"" + Environment.NewLine
+              + "}" + Environment.NewLine;
           }
-          json += "{" + Environment.NewLine
-            + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-            + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-            + "\"times\":\"[" + JSONConverter.timesToJSON(tags[i].Times) + "]\"" + Environment.NewLine
-            + "}" + Environment.NewLine;
         }
-
         return json;
       }
 
@@ -242,19 +252,20 @@ namespace Shark.ASIP.Conversion {
       /// <returns></returns>
       private static string timesToJSON(IList<ITime> times) {
         string json = "";
-        for (int i = 0; i < times.Count; i++) {
-          if (i > 0) {
-            json += ", ";
+        if (times != null) {
+          for (int i = 0; i < times.Count; i++) {
+            if (i > 0) {
+              json += ", ";
+            }
+            json += "{" + Environment.NewLine
+              + "\"from\": "
+                + "{ \"utcTime\":\"" + times[i].FromUtc + "\"}, "
+                + "{ \"unixTime\":\"" + times[i].FromUnix + "\"}, "
+                + "{ \"sharkTime\":\"" + times[i].FromShark + "\"}," + Environment.NewLine
+              + "\"duration\":\"" + times[i].Duration + "\"" + Environment.NewLine
+              + "}" + Environment.NewLine;
           }
-          json += "{" + Environment.NewLine
-            + "\"from\": "
-              + "{ \"utcTime\":\"" + times[i].FromUtc + "\"}, "
-              + "{ \"unixTime\":\"" + times[i].FromUnix + "\"}, "
-              + "{ \"sharkTime\":\"" + times[i].FromShark + "\"}," + Environment.NewLine
-            + "\"duration\":\"" + times[i].Duration + "\"" + Environment.NewLine
-            + "}" + Environment.NewLine;
         }
-
         return json;
       }
 

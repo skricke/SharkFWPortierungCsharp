@@ -49,6 +49,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharkFWPortierungCsharp\ASIP.csproj">
+      <Project>{e62c1512-00ba-4d86-9a36-2f4b439a3de2}</Project>
+      <Name>ASIP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shark\Shark.csproj">
+      <Project>{cb3188a9-d8eb-47eb-b749-bbc99215a44a}</Project>
+      <Name>Shark</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

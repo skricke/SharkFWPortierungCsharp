@@ -10,5 +10,9 @@ namespace Shark.ASIP.SemanticNets {
     ///   The SpatialSemanticTag represents the nodes in the semantic net. Each tag is related to a semanticTagId.
     /// </summary>
     public new IDictionary<string, ISpatialSemanticTag> SemanticTagsTable { get; set; }
+
+    public SpatialSemanticNet() {
+      SemanticTagsTable = new Dictionary<string, ISpatialSemanticTag>();
+    }
   }
 }

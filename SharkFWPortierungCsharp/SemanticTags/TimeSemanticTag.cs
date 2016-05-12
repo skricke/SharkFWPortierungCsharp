@@ -15,6 +15,12 @@ namespace Shark.ASIP.SemanticTags {
     public TimeSemanticTag(string name, IList<string> siList, IList<ITime> times) : this(name, siList) {
       Times = times;
     }
+
+    public TimeSemanticTag(string name, string si, ITime time) : base(name, si) {
+      IList<ITime> timeList = new List<ITime>();
+      timeList.Add(time);
+      Times = timeList;
+    }
     // TODO add and remove Location times
     /// <summary>
     ///   Adds a valid time period.

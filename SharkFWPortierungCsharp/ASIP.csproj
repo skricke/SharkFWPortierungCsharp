@@ -71,8 +71,14 @@
     <Compile Include="SemanticNets\SemanticNet.cs" />
     <Compile Include="SemanticNets\SpatialSemanticNet.cs" />
     <Compile Include="SemanticNets\TimeSemanticNet.cs" />
+    <Compile Include="SemanticTags\ITimeSemanticTagSet.cs" />
+    <Compile Include="SemanticTags\ISpatialSemanticTagSet.cs" />
+    <Compile Include="SemanticTags\IPeerSemanticTagSet.cs" />
     <Compile Include="SemanticTags\PeerSemanticTag.cs" />
+    <Compile Include="SemanticTags\SpatialSemanticTagSet.cs" />
+    <Compile Include="SemanticTags\TimeSemanticTagSet.cs" />
     <Compile Include="SemanticTags\SemanticTag.cs" />
+    <Compile Include="SemanticTags\PeerSemanticTagSet.cs" />
     <Compile Include="SemanticTags\SemanticTagSet.cs" />
     <Compile Include="SemanticTags\SpatialSemanticTag.cs" />
     <Compile Include="SemanticTags\TimeSemanticTag.cs" />

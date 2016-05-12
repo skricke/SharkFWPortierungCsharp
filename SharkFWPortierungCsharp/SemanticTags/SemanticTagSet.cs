@@ -16,6 +16,27 @@ namespace Shark.ASIP.SemanticTags {
     /// <value> The semantic tags. </value>
     public IList<ISemanticTag> SemanticTags { get; }
 
+    public SemanticTagSet() {
+      SemanticTags = new List<ISemanticTag>();
+    }
+
+    /// <summary> Creates a semantic tag from given name and subject identifiers and adds it to the SemanticTags,
+    ///           but only if no identical tag already exists in the set.</summary>
+    /// TODO: two functionalities - redesign?
+    /// 
+    /// <param name="name"> The semantic tag`s name. </param>
+    /// <param name="si">  The first intial subject identifiers. </param>
+    ///
+    /// <returns> The created semantic tag. </returns>
+    /// <exception cref="SharkASIPException">Throws an Exception if an identical tag already exists.</exception>
+    public ISemanticTag createSemanticTag(string name, string si) {
+      ISemanticTag tag = new SemanticTag(name, si);
+      SemanticTags.Add(tag);
+
+      return tag;
+    }
+
+
     /// <summary> Creates a semantic tag from given name and subject identifiers and adds it to the SemanticTags,
     ///           but only if no identical tag already exists in the set.</summary>
     /// TODO: two functionalities - redesign?

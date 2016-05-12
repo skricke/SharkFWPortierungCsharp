@@ -16,7 +16,23 @@ namespace Shark.ASIP {
       Direction = direction;
     }
 
-    public Interest(ISemanticTagSet topics, ISemanticTagSet types, IList<IPeerSemanticTag> approvers, IPeerSemanticTag sender, 
+    public Interest(ISemanticTagSet topics, ISemanticTagSet types, IPeerSemanticTag approver, IPeerSemanticTag sender,
+                    IPeerSemanticTag recipient, ISpatialSemanticTag location, ITimeSemanticTag time, Directions direction) {
+      Topics = topics;
+      Types = types;
+      Approvers = new List<IPeerSemanticTag>();
+        Approvers.Add(approver);
+      Sender = sender;
+      Recipients = new List<IPeerSemanticTag>();
+      Recipients.Add(recipient);
+      Locations = new List<ISpatialSemanticTag>();
+      Locations.Add(location);
+      Times = new List<ITimeSemanticTag>();
+      Times.Add(time);
+      Direction = direction;
+    }
+
+    public Interest(ISemanticTagSet topics, ISemanticTagSet types, IList<IPeerSemanticTag> approvers, IPeerSemanticTag sender,
                     IList<IPeerSemanticTag> recipients, IList<ISpatialSemanticTag> locations, IList<ITimeSemanticTag> times, Directions direction) {
       Topics = topics;
       Types = types;
