@@ -36,7 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ASIPCommand.cs" />
+    <Compile Include="ASIPContent.cs" />
     <Compile Include="ASIPEngine.cs" />
+    <Compile Include="IInMessageContent.cs" />
+    <Compile Include="InMessageContent.cs" />
+    <Compile Include="IOutMessageContent.cs" />
+    <Compile Include="OutMessage.cs" />
+    <Compile Include="OutMessageContent.cs" />
     <Compile Include="Conversion\JSONConverterJavaStyle.cs" />
     <Compile Include="Conversion\SharkConverter.cs" />
     <Compile Include="IASIPContent.cs" />

@@ -6,7 +6,7 @@ namespace Shark {
     public interface IKnowledge : IASIPContent {
       // TODO Design and Implement Knowledge from BNF-File
       ISharkVocabulary Vocabulary { get; }
-      IEnumerable<IInformation> Infos { get; }
+      IInformation Infos { get; }
     }
   }
 }

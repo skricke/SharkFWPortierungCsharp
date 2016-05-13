@@ -17,6 +17,7 @@ namespace Shark
     /// <see href="https://github.com/SharedKnowledge"/>
     /// 
     public interface IASIPEngine {
+
       /// <summary>
       ///   Send the insert command for insertion of the Knowledge.
       /// </summary>

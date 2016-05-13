@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Shark.ASIP {
   public class Knowledge : IKnowledge {
     public ISharkVocabulary Vocabulary { get; }
-    public IEnumerable<IInformation> Infos { get; }
+    public IInformation Infos { get; }
 
     private Knowledge() { }
-    public Knowledge(ISharkVocabulary vocabulary, IEnumerable<IInformation> infos) {
+    public Knowledge(ISharkVocabulary vocabulary, IInformation infos) {
       Vocabulary = vocabulary;
       Infos = infos;
     }

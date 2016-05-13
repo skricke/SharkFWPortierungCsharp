@@ -27,7 +27,7 @@ namespace Shark.ASIP {
     /// </summary>
     public IMessageSignature Signature { get; set; }
 
-    private MessageContent() { }
+    public MessageContent() { }
     public MessageContent(IPeerSemanticTag logicalSender, bool signed, ASIPCommand command,
                           IASIPContent content, IMessageSignature signature) {
       LogicalSender = logicalSender;

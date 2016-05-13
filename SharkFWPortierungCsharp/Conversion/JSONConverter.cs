@@ -18,60 +18,186 @@ namespace Shark.ASIP.Conversion {
   ///   <li>Knowledge</li>
   /// </ul>
   public static class JSONConverter {
-      /// <summary>
-      ///   Converts an interest object into a string, which is conform with JSON-format.
-      /// </summary>
-      /// <param name="interest">The Interest to be converted.</param>
-      /// <returns>The object values as JSON-formatted string.</returns>
-      public static string convertInterestToJSON(IInterest interest) {
+    //    cmd                     = '{'
+    //                              header ','
+    //                              '"content":' content
+    //                          '}' signature ;
+    //header                  = '"version":' floatNumber ','
+    //                          '"format":' text ','
+    //                          '"encryptedKey":' text | void ','
+    //                          '"sender":' optionalSemanticTag ','
+    //                          '"receiver":' '[' optionalSemanticTags ']' ','
+    //                          '"signed":' bool ','
+    //                          '"ttl":' number | ( unixTime | utcTime) ;
+    //optionalSemanticTag     = peerSemanticTag | spatialSemanticTag | timeSemanticTag ;
+    //optionalSemanticTags    = optionalSemanticTag { ',' optionalSemanticTag
+    //  };
+    //  content                 = '{'
+    //                            '"logSender":' logicalSender ','
+    //                            '"signed":' bool ','
+    //                            ( insert | expose | raw )
+    //                          '}' signature ;
+    //signature               = text ;
+    //insert                  = '"insert":' '[' {knowledges
+    //} ']' ;
+    ////expose                  = '"expose":' '[' {interests} ']' ;
+    //raw                     = '"raw":' text ;
+    //logicalSender           = peerSemanticTag ;
+    public static string convertMessageToJSON(IMessage message) {
+      string json = "{" + Environment.NewLine;
+      json += JSONConverter.convertHeader(message.Header) + ",";
+      json += "\"content\":\"";
+
+      //json += "\"expose\":\"[" + convertInterestsToJSON(content.Content) + "\"]";
+      //switch (message.Content.Command) {
+      //  case ASIPCommand.EXPOSE:
+      //    json += convertOutContent(message.Content);
+      //    break;
+      //  case ASIPCommand.INSERT:
+      //    json += convertInContent(message.Content);
+      //    break;
+      //}
+      json += Environment.NewLine
+        + "}"
+        + message.Signature;
+
+      return json;
+    }
+
+    public static string convertInMessageToJSON(IInMessage message) {
+      string json = "{" + Environment.NewLine;
+      json += JSONConverter.convertHeader(message.Header) + ",";
+      json += "\"content\":\"";
+
+      //json += "\"expose\":\"[" + convertInterestsToJSON(content.Content) + "\"]";
+      json += convertInContent(message.Content);
+      json += Environment.NewLine
+        + "}"
+        + message.Signature;
+
+      return json;
+    }
+
+    public static string convertOutMessageToJSON(IOutMessage message) {
+      string json = "{" + Environment.NewLine;
+      json += JSONConverter.convertHeader(message.Header) + ",";
+      json += "\"content\":";
+
+      //json += "\"expose\":\"[" + convertInterestsToJSON(content.Content) + "\"]";
+      
+      json += convertOutContent(message.Content);
+          
+        
+      json += Environment.NewLine
+        + "}"
+        + message.Signature;
+
+      return json;
+    }
+
+    private static string convertHeader(IMessageHeader head) {
+      string json = "";
+
+      json += "\"version\":\"" + head.Version + "\"," + Environment.NewLine
+      + "\"format\":\"" + head.Format + "\"," + Environment.NewLine
+      + "\"encryptedKey\":\"" + head.EncryptedKey + "\"," + Environment.NewLine
+      + "\"sender\":\"" + semanticTagToJSON(head.Sender) + "\"," + Environment.NewLine
+      + "\"receiver\":[" + peerSemanticTagsToJSON(head.Receiver) + "]," + Environment.NewLine
+      + "\"signed\":\"" + head.Signed  + "\"," + Environment.NewLine
+      + "\"ttl\":\"" + head.TimeToLive + "\"" + Environment.NewLine;
+
+      return json;
+    }
+
+    private static string convertInContent(IInMessageContent content) {
+      string json = "{" + Environment.NewLine;
+      json += "\"logSender\":" + peerSemanticTagToJSON(content.LogicalSender) + "," + Environment.NewLine
+        + "\"signed\":\"" + content.Signed + "\"," + Environment.NewLine;
+
+      switch (content.Command) {
+        case ASIPCommand.EXPOSE:
+          //json += "\"expose\":\"[" + convertInterestsToJSON(content.Content) + "\"]";
+          break;
+        case ASIPCommand.INSERT:
+          json += "\"insert\":\"[" + convertKnowledgesToJSON(content.Content) + "\"]";
+          break;
+        case ASIPCommand.RAW:
+          json += "\"raw\":\"" + content.Content + "\"";
+          break;
+      }
+
+      json += Environment.NewLine + "}"
+        + content.Signature;
+
+      return json;
+    }
+
+    private static string convertOutContent(IOutMessageContent content) {
+      string json = "{" + Environment.NewLine;
+      json += "\"logSender\":" + peerSemanticTagToJSON(content.LogicalSender) + "," + Environment.NewLine
+        + "\"signed\":\"" + content.Signed + "\"," + Environment.NewLine;
+
+      switch (content.Command) {
+        case ASIPCommand.EXPOSE:
+          json += "\"expose\":[" + convertInterestsToJSON(content.Content) + "]";
+          break;
+        case ASIPCommand.INSERT:
+          //json += "\"insert\":\"[" + convertKnowledgesToJSON(content.Content) + "\"]";
+          break;
+        case ASIPCommand.RAW:
+          json += "\"raw\":\"" + content.Content + "\"";
+          break;
+      }
+
+      json += Environment.NewLine + "}"
+        + content.Signature;
+
+      return json;
+    }
+
+    /// <summary>
+    ///   Converts an interest object into a string, which is conform with JSON-format.
+    /// </summary>
+    /// <param name="interest">The Interest to be converted.</param>
+    /// <returns>The object values as JSON-formatted string.</returns>
+    public static string convertInterestToJSON(IInterest interest) {
         // TODO Complete JSON-Method and comment it
         string json = "{" + Environment.NewLine;
-
-      //String topics = "\"topics\": {" + Environment.NewLine
-      //  + "\""
-      //  + interest.Topics // TODO Conversion of SemanticTags
-      //  + "\""
-      //  + "}"; // | void
+      
       if (interest != null) {
-        string topics = "{ \"topics\":\"["
+        string topics = "\"topics\":["
           + JSONConverter.semanticTagsToJSON(interest.Topics)
-          + "]\""
-          + "}, " + Environment.NewLine;
+          + "], " + Environment.NewLine;
 
-        string types = "{ \"types\":\"["
+        string types = "\"types\":["
           + JSONConverter.semanticTagsToJSON(interest.Types)
-          + "]\""
-          + "}, " + Environment.NewLine;
+          + "], " + Environment.NewLine;
 
-        string approvers = "{ \"approvers\":\"["
+        string approvers = "\"approvers\":["
           + JSONConverter.peerSemanticTagsToJSON(interest.Approvers)
-          + "]\""
-          + "}, " + Environment.NewLine;
+          + "], " + Environment.NewLine;
 
         List<IPeerSemanticTag> senderlist = new List<IPeerSemanticTag>();
         senderlist.Add(interest.Sender);
-        string sender = "{ \"sender\":\""
+        string sender = "\"sender\":"
           + JSONConverter.peerSemanticTagsToJSON(senderlist)
-          + "\"}, " + Environment.NewLine;
+          + ", " + Environment.NewLine;
 
-        string recipients = "{ \"recipients\":\"["
+        string recipients = "\"recipients\":["
           + JSONConverter.peerSemanticTagsToJSON(interest.Recipients)
-          + "]\""
-          + "}, " + Environment.NewLine;
+          + "], " + Environment.NewLine;
 
-        string locations = "{ \"locations\":\"["
+        string locations = "\"locations\":["
          + JSONConverter.spatialSemanticTagsToJSON(interest.Locations)
-         + "]\""
-         + "}, " + Environment.NewLine;
+         + "], " + Environment.NewLine;
 
-        string times = "{ \"times\":\"["
+        string times = "\"times\":["
          + JSONConverter.timeSemanticTagsToJSON(interest.Times)
-         + "]\""
-         + "}, " + Environment.NewLine;
+         + "], " + Environment.NewLine;
 
-        string direction = "{ \"direction\":\""
+        string direction = "\"direction\":\""
          + interest.Direction
-         + "\"} " + Environment.NewLine;
+         + "\"" + Environment.NewLine;
 
         json += topics + types + approvers + sender + recipients + locations + times + direction;
       }
@@ -97,97 +223,258 @@ namespace Shark.ASIP.Conversion {
         }
         return json;
       }
+    /// <summary>
+    /// knowledges              = knowledge { ',' knowledge } ;
+    /// knowledge               = '{'
+    /// '"vocabulary":' vocabulary ','
+    /// '"infoData":' '[' infoDatas ']' ','
+    /// infoContent
+    /// '}' ;
+    /// vocabulary              = '{' topicDim ',' typeDim ',' peerDim ',' locationDim ',' timeDim '}' ;
+    /// infoDatas               = infoData { ',' infoData
+    /// };
+    /// infoData                = '{'
+    /// '"infoSpace":' infoSpace ','
+    /// '"infoMetaData":' '[' [infoMetaDatas] ']'
+    /// '}' ;
+    /// infoMetaDatas           = infoMetaData { ',' infoMetaData
+    /// };
+    /// infoMetaData            = '{'
+    /// '"name": ' text ','
+    /// '"offset":' number ','
+    /// '"length":' number
+    /// '}' ;
+    /// infoContent             = '{'
+    /// '"byteStream":' text
+    /// '}' ;
+    /// infoSpace               = '{'
+    /// topics ','
+    /// types ','
+    /// approvers ','
+    /// senders ','
+    /// recipients ','
+    /// locations ','
+    /// times ','
+    /// direction
+    /// '}'
+    /// </summary>
+    /// <param name="ken"></param>
+    /// <returns></returns>
+    public static string convertKnowledgeToJSON(IKnowledge ken) {
+      string json = "{" + Environment.NewLine;
+      json += "\"vocabulary\":\"" + convertVocabulary(ken.Vocabulary) + "\"," + Environment.NewLine
+        + "\"infoData\":\"[" + convertInfoData(ken.Infos.InfoData) + "]\"," + Environment.NewLine
+        + convertInfoContent(ken.Infos.InfoContent) + Environment.NewLine
+        + "}" + Environment.NewLine;
+ 
+      return json;
+    }
 
-      // TODO convert KNOWLEDGES
-      public static string convertKnowledgeToJSON(IKnowledge ken) {
-        string json = "";
-
-        return json;
-      }
-
-      public static string convertKnowledgesToJSON(IKnowledge kens) {
-        string json = "";
-
-        return json;
-      }
-
-
-      /// <summary>
-      /// Format:
-      ///   semanticTagName         = '"name":' name ;
-      ///   semanticTagSI           = '"sis":' '[' {subjectIdentifiers} ']' ;
-      ///   semanticTag             = '{'
-      ///     semanticTagName ','
-      ///     semanticTagSI
-      ///   '}' ;      
-      ///   semanticTags            = semanticTag { ',' semanticTag
-      ///   };
-      /// </summary>
-      /// <param name="tagset"></param>
-      /// <returns></returns>
-      private static string semanticTagsToJSON(ISemanticTagSet tagset)  {
-        IList<ISemanticTag> tags = tagset.SemanticTags;
-        string json =  "";
-      //foreach (ISemanticTag tag in tags.SemanticTags) {
-        if (tags != null) {
-          if (tags != null) {
-            for (int i = 0; i < tags.Count; i++) {
-              if (i > 0) {
-                json += ", ";
-              }
-              json += "{" + Environment.NewLine
-                + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-                + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\"" + Environment.NewLine
-                + "}" + Environment.NewLine;
-            }
+    public static string convertKnowledgesToJSON(IList<IKnowledge> kens) {
+      string json = "";
+      if (kens != null) {
+        for (int i = 0; i < kens.Count; i++) {
+          if (i > 0) {
+            json += ", ";
           }
+          json += JSONConverter.convertKnowledgeToJSON(kens[i]);
         }
-        return json;
+      }
+      return json;
+    }
+
+    private static string convertVocabulary(ISharkVocabulary vocabulary) {
+      string json = "{" + Environment.NewLine
+        + convertSemanticNet(vocabulary.TopicDim) + "," 
+        + convertSemanticNet(vocabulary.TypeDim) + "," 
+        + convertSemanticNet(vocabulary.PeerDim) + "," 
+        + convertSemanticNet(vocabulary.LocationDim) + "," 
+        + convertSemanticNet(vocabulary.TimeDim) + Environment.NewLine
+        + "}" + Environment.NewLine;
+      //topicDim = semanticNet;
+      //typeDim = semanticNet;
+      //peerDim = peerSemanticTagNet;
+      //locationDim = spatialSemanticTagNet;
+      //timeDim = timeSemanticTagNet;    
+     
+      return json;
+    }
+
+    private static string convertSemanticNet(ISemanticNet net) {
+      string json = "{" + Environment.NewLine
+        + "\"stTable\":[";
+
+      foreach (var entry in net.SemanticTagsTable) {
+        json += "{\"id\":\"" + entry.Key + "\"},";
+        //if (net is IPeerSemanticNet) {
+        //  json += peerSemanticTagToJSON(entry.Value);
+        //} else if (net is ISpatialSemanticNet) {
+        //  json += spatialSemanticTagToJSON(entry.Value);
+        //} else if (net is ITimeSemanticNet) {
+        //  json += timeSemanticTagToJSON(entry.Value);
+        //} else  {
+          json += semanticTagToJSON(entry.Value);
+        //}
       }
 
+      json += "]," + Environment.NewLine
+        + "\"relations\":[" + convertProperties(net.Relations) + "]" + Environment.NewLine
+        + "}" + Environment.NewLine;
 
-      /// <summary>
-      /// Format:
-      ///   peerSemanticTag         = '{'
-      ///   semanticTag ','
-      ///   '"addresses":' '[' {addresses } ']'
-      ///   '}' ;
-      ///   peerSemanticTags        = peerSemanticTag { ',' peerSemanticTag };
-      /// </summary>
-      /// <param name="tags">The PeerSemanticTags to be converted.</param>
-      /// <returns></returns>
-      private static string peerSemanticTagsToJSON(IList<IPeerSemanticTag> tags) {
-        
-        //IList<ISemanticTag> tags = tagset.SemanticTags;
-        string json = "";
-        //foreach (ISemanticTag tag in tags.SemanticTags) {
+      return json;
+    }
+
+    private static string convertProperties(IList<IProperty> properties) {
+      string json = "";
+      if (properties != null) {
+        for (int i = 0; i < properties.Count; i++) {
+          if (i > 0) {
+            json += ", ";
+          }
+          json += convertProperty(properties[i]);
+        }
+      }
+      return json;
+    }
+    
+    private static string convertProperty(IProperty property) {
+      string json = "{" + Environment.NewLine
+                  + "\"propertyName\":\"" + property.Name + "," + Environment.NewLine
+                  + "\"sourceId\":\"" + property.SourceId + "," + Environment.NewLine
+                  + "\"targetId\":\"" + property.TargetId + Environment.NewLine
+                  + "}" + Environment.NewLine;
+
+      return json;
+    }
+
+    //infoDatas = infoData {"," infoData};
+    private static string convertInfoData(IInformationData data) {
+      string json = "{" + Environment.NewLine
+        + "\"infoSpace\":\"" + convertInfoSpace(data.InfoSpace) + "\"," + Environment.NewLine
+        + "\"infoMetaData\":\"["+ convertInfoMetaDatas(data.MetaInfos) + "\"]" + Environment.NewLine
+        + "}" + Environment.NewLine;
+   
+        return json;
+    }
+
+    private static string convertInfoSpace(IInfoSpace infoSpace) {
+      return convertInterestToJSON(infoSpace);      
+    }
+
+    /// infoMetaDatas           = infoMetaData { ',' infoMetaData
+    /// };
+    private static string convertInfoMetaDatas(IInfoMetaData meta) {
+      string json =  "{" + Environment.NewLine
+        + "\"name\":\"" + meta.Name + "\"," + Environment.NewLine
+        + "\"offset\":\"" + meta.Offset + Environment.NewLine
+        + "\"length\":\"" + meta.Length + Environment.NewLine
+        + "}" + Environment.NewLine;
+
+      return json;
+    }
+
+    private static string convertInfoContent(byte content) {
+      string json = "{" + Environment.NewLine
+        +"\"byteStream\":\"" + content + "\"" + Environment.NewLine
+        + "}" + Environment.NewLine;
+      return json;
+    }
+
+    /// <summary>
+    /// Format:
+    ///   semanticTagName         = '"name":' name ;
+    ///   semanticTagSI           = '"sis":' '[' {subjectIdentifiers} ']' ;
+    ///   semanticTag             = '{'
+    ///     semanticTagName ','
+    ///     semanticTagSI
+    ///   '}' ;      
+    ///   semanticTags            = semanticTag { ',' semanticTag
+    ///   };
+    /// </summary>
+    /// <param name="tagset"></param>
+    /// <returns></returns>
+    private static string semanticTagsToJSON(ISemanticTagSet tagset) {
+      IList<ISemanticTag> tags = tagset.SemanticTags;
+      string json = "";
+      //foreach (ISemanticTag tag in tags.SemanticTags) {
+      if (tags != null) {
         if (tags != null) {
-        for (int i = 0; i < tags.Count; i++) {
+          for (int i = 0; i < tags.Count; i++) {
             if (i > 0) {
               json += ", ";
             }
-            json += "{" + Environment.NewLine
-              + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-              + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-              + "\"addresses\":\"[" + JSONConverter.addressesToJSON(tags[i].Addresses) + "]\"" + Environment.NewLine
-              + "}" + Environment.NewLine;
+            json += semanticTagToJSON(tags[i]);
           }
         }
-        return json; 
-        
       }
+      return json;
+    }
 
-      /// <summary>
-      /// Format:
-      ///  spatialSemanticTag      = '{'
-      ///  semanticTag ','
-      ///  '"locations":' '[' {locations } ']'
-      ///  '}' ;
-      ///  spatialSemanticTags     = spatialSemanticTag { ',' spatialSemanticTag };
-      /// </summary>
-      /// <param name="tags">The SpatialSemanticTags to be converted.</param>
-      /// <returns></returns>
-      private static string spatialSemanticTagsToJSON(IList<ISpatialSemanticTag> tags) {
+    private static string semanticTagToJSON(ISemanticTag tag) {
+      string json = "";
+      
+      if (tag != null) {               
+            json += "{" + Environment.NewLine
+              + "\"name\":\"" + tag.Name + "\"," + Environment.NewLine
+              + "\"sis\":[" + JSONConverter.sisToJSON(tag.SIS) + "]" + Environment.NewLine
+              + "}" + Environment.NewLine;
+      }
+      return json;
+    }
+
+
+    /// <summary>
+    /// Format:
+    ///   peerSemanticTag         = '{'
+    ///   semanticTag ','
+    ///   '"addresses":' '[' {addresses } ']'
+    ///   '}' ;
+    ///   peerSemanticTags        = peerSemanticTag { ',' peerSemanticTag };
+    /// </summary>
+    /// <param name="tags">The PeerSemanticTags to be converted.</param>
+    /// <returns></returns>
+    private static string peerSemanticTagsToJSON(IList<IPeerSemanticTag> tags) {
+
+      //IList<ISemanticTag> tags = tagset.SemanticTags;
+      string json = "";
+      //foreach (ISemanticTag tag in tags.SemanticTags) {
+      if (tags != null) {
+        for (int i = 0; i < tags.Count; i++) {
+          if (i > 0) {
+            json += ", ";
+          }
+          json += peerSemanticTagToJSON(tags[i]);
+        }
+      }
+      return json;
+
+    }
+
+    private static string peerSemanticTagToJSON(IPeerSemanticTag tag) {
+      string json = "";
+
+      if (tag != null) {        
+        json += "{" + Environment.NewLine
+          + "\"name\":\"" + tag.Name + "\"," + Environment.NewLine
+          + "\"sis\":[" + JSONConverter.sisToJSON(tag.SIS) + "], " + Environment.NewLine
+          + "\"addresses\":[" + JSONConverter.addressesToJSON(tag.Addresses) + "]" + Environment.NewLine
+          + "}" + Environment.NewLine;        
+      }
+      return json;
+
+    }
+
+    /// <summary>
+    /// Format:
+    ///  spatialSemanticTag      = '{'
+    ///  semanticTag ','
+    ///  '"locations":' '[' {locations } ']'
+    ///  '}' ;
+    ///  spatialSemanticTags     = spatialSemanticTag { ',' spatialSemanticTag };
+    /// </summary>
+    /// <param name="tags">The SpatialSemanticTags to be converted.</param>
+    /// <returns></returns>
+    private static string spatialSemanticTagsToJSON(IList<ISpatialSemanticTag> tags) {
         //IList<ISemanticTag> tags = tagset.SemanticTags;
         string json = "";
       //foreach (ISemanticTag tag in tags.SemanticTags) {
@@ -198,8 +485,8 @@ namespace Shark.ASIP.Conversion {
             }
             json += "{" + Environment.NewLine
               + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-              + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-              + "\"locations\":\"[" + JSONConverter.locationsToJSON(tags[i].Locations) + "]\"" + Environment.NewLine
+              + "\"sis\":[" + JSONConverter.sisToJSON(tags[i].SIS) + "], " + Environment.NewLine
+              + "\"locations\":[" + JSONConverter.locationsToJSON(tags[i].Locations) + "]" + Environment.NewLine
               + "}" + Environment.NewLine;
           }
         }
@@ -227,8 +514,8 @@ namespace Shark.ASIP.Conversion {
             }
             json += "{" + Environment.NewLine
               + "\"name\":\"" + tags[i].Name + "\"," + Environment.NewLine
-              + "\"sis\":\"[" + JSONConverter.sisToJSON(tags[i].SIS) + "]\", " + Environment.NewLine
-              + "\"times\":\"[" + JSONConverter.timesToJSON(tags[i].Times) + "]\"" + Environment.NewLine
+              + "\"sis\":[" + JSONConverter.sisToJSON(tags[i].SIS) + "], " + Environment.NewLine
+              + "\"times\":[" + JSONConverter.timesToJSON(tags[i].Times) + "]" + Environment.NewLine
               + "}" + Environment.NewLine;
           }
         }
@@ -308,7 +595,7 @@ namespace Shark.ASIP.Conversion {
             json += ", ";
           }
           json += "{" + Environment.NewLine
-            + "\"address\":\"" + addresses[i] + Environment.NewLine
+            + "\"address\":\"" + addresses[i] + "\"" + Environment.NewLine
             + "}" + Environment.NewLine;
         }
 

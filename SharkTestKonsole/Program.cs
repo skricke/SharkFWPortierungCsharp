@@ -12,7 +12,7 @@ using Shark.ASIP.Conversion;
 namespace SharkTestKonsole {
   class Program {
     private static IList<IPeerSemanticTag> approvers;
-    private static IMessageContent content;
+    private static IOutMessageContent content;
     private static IMessageHeader head;
     private static IList<IPeerSemanticTag> recipients;
 
@@ -20,7 +20,7 @@ namespace SharkTestKonsole {
       IASIPEngine engine;
       Shark.Development.SharkDevelopmentPlaceholder connection;
 
-      IMessage message;
+      IOutMessage message;
       string msg = "";
       IInterest interest;
       IKnowledge knowledge;
@@ -92,12 +92,16 @@ namespace SharkTestKonsole {
       head = new MessageHeader(1.0f, "JSON", "", sender, peers.SemanticTags, false, 10);
 
       IASIPContent infoContent = new Interest(Directions.INOUT);
-      content = new MessageContent(sender, false, ASIPCommand.INSERT, infoContent, null);
-      message = new Message(head, content);
+      content = new OutMessageContent(sender, false, ASIPCommand.EXPOSE, interest, null);
+      message = new OutMessage(head, content);
 
 
       msg = JSONConverter.convertInterestToJSON(interest);
+      System.Diagnostics.Debug.WriteLine(msg);
+      System.Diagnostics.Debug.WriteLine("----------------------");
+      msg = JSONConverter.convertOutMessageToJSON(message);
       Console.WriteLine(msg);
+      System.Diagnostics.Debug.WriteLine(msg);
       
     }
   }

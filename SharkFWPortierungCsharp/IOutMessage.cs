@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shark.ASIP {
-  public interface IOutMessage : IMessageContent {
-    
+  public interface IOutMessage : IMessage {
+    new IOutMessageContent Content { get; }
   }
 }

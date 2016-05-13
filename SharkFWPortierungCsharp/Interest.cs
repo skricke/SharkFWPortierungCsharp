@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 namespace Shark.ASIP {
-  public class Interest : IInterest {
+  public class Interest : ASIPContent, IInterest {
     public ISemanticTagSet Topics { get; set; }
     public ISemanticTagSet Types { get; set; }
     public IList<IPeerSemanticTag> Approvers { get; set; }
